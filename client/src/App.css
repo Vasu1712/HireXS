@@ -1,0 +1,53 @@
+/* :root {
+  --color-background: #e8e0fd;
+  --color-text: #111;
+  --font-family: Roboto, sans-serif;
+} */
+
+body {
+  background: linear-gradient(to right, #252729, #1C1D1F);
+  font-family: 'SF Pro Rounded';
+}
+
+.App {
+  text-align: center;
+  margin: 20px;
+}
+
+.logo {
+  width: 46px;
+  /* margin-right: 74px;
+  margin-top: 63px; */
+  position: absolute;
+  top: 2rem;
+  left: 4rem;
+}
+
+.google-signin-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 63px;
+  margin-right: 20px; 
+}
+
+.navbar {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  font-size: 1.3rem;
+}
+
+.navbar li {
+  margin: 0 1.8rem;
+}
+
+.navbar a {
+  text-decoration: none;
+  color: #D1C7C7;
+}
+
+.navbar a:hover {
+  color: #FFFFFF;
+}
