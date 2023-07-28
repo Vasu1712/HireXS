@@ -1,34 +1,59 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const JwtStrategy = require('passport-jwt').Strategy,
+	ExtractJwt = require('passport-jwt').ExtractJwt;
+const passport = require('passport');
+const User = require('./models/User');
+const authRoutes = require('./routes/auth');
+const jobRoutes = require('./routes/jobslist');
+require('dotenv').config();
+const cors = require('cors');
 const app = express();
-const port = 8080;
+const port = 3000;
 
-const mongoUrl = 'mongodb+srv://mahirakajaria:NL1htAGffe0TLscA@cluster0.estoffi.mongodb.net/?retryWrites=true&w=majority';
+app.use(cors());
+app.use(express.json());
+
 mongoose
-	.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
-	.then(() => console.log('Connected to MongoDB successfully'))
-	.catch((err) => console.error('Error connecting to MongoDB:', err));
+	.connect(
+		'mongodb+srv://mahirakajaria:<password>@cluster0.estoffi.mongodb.net/',
+		{
+			useNewUrlParser: true,
+			useUnifiedTopology: true,
+		}
+	)
+	.then((x) => {
+		console.log('Connected to Mongo!');
+	})
+	.catch((err) => {
+		console.log(err);
+	});
 
-const jobSchema = new mongoose.Schema({
-	jobTitle: String,
-	jobId: String,
-	location: String,
-	salary: String,
-	description: String,
-	applicationDate: Date,
+let opts = {};
+opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
+opts.secretOrKey = 'thisKeyIsSupposedToBeSecret';
+passport.use(
+	new JwtStrategy(opts, function (jwt_payload, done) {
+		User.findOne({ _id: jwt_payload.identifier }, function (err, user) {
+			// done(error, doesTheUserExist)
+			if (err) {
+				return done(err, false);
+			}
+			if (user) {
+				return done(null, user);
+			} else {
+				return done(null, false);
+			}
+		});
+	})
+);
+
+app.get('/', (req, res) => {
+	res.send('Hello World');
 });
-
-const Job = mongoose.model('Job', jobSchema);
-
-app.get('/jobs', async (req, res) => {
-	try {
-		const jobs = await Job.find({});
-		return res.json(jobs);
-	} catch (error) {
-		res.status(500).json({ message: 'Error fetching jobs' });
-	}
-});
+app.use('/auth', authRoutes);
+app.use('/jobslist', jobRoutes);
 
 app.listen(port, () => {
-	console.log(`Server is running on http://localhost:${port}`);
+	console.log('App is running on port ' + port);
 });
