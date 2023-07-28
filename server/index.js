@@ -1,9 +1,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const app = express();
-const port = 3000;
+const port = 8080;
 
-const mongoUrl = 'mongodb://localhost:27017/jobDB';
+const mongoUrl = 'mongodb+srv://mahirakajaria:NL1htAGffe0TLscA@cluster0.estoffi.mongodb.net/?retryWrites=true&w=majority';
 mongoose
 	.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true })
 	.then(() => console.log('Connected to MongoDB successfully'))
@@ -23,7 +23,7 @@ const Job = mongoose.model('Job', jobSchema);
 app.get('/jobs', async (req, res) => {
 	try {
 		const jobs = await Job.find({});
-		res.json(jobs);
+		return res.json(jobs);
 	} catch (error) {
 		res.status(500).json({ message: 'Error fetching jobs' });
 	}

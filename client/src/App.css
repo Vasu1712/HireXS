@@ -1,53 +1,38 @@
-/* :root {
-  --color-background: #e8e0fd;
-  --color-text: #111;
-  --font-family: Roboto, sans-serif;
-} */
-
-body {
-  background: linear-gradient(to right, #252729, #1C1D1F);
-  font-family: 'SF Pro Rounded';
-}
-
 .App {
   text-align: center;
-  margin: 20px;
 }
 
-.logo {
-  width: 46px;
-  /* margin-right: 74px;
-  margin-top: 63px; */
-  position: absolute;
-  top: 2rem;
-  left: 4rem;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
-.google-signin-button {
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: 63px;
-  margin-right: 20px; 
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
-.navbar {
-  list-style: none;
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  padding: 0;
-  font-size: 1.3rem;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
-.navbar li {
-  margin: 0 1.8rem;
+.App-link {
+  color: #61dafb;
 }
 
-.navbar a {
-  text-decoration: none;
-  color: #D1C7C7;
-}
-
-.navbar a:hover {
-  color: #FFFFFF;
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
