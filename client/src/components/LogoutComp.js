@@ -12,7 +12,7 @@ const logout = () => {
 
 const LogoutComp = () => {
     return (
-        <div className="bg-gradient-to-r from-red-400 to-pink-600 h-2/3 px-6 mt-2 flex items-center justify-center rounded-full font-semibold cursor-pointer mr-4">
+        <div className="bg-gradient-to-r from-red-400 to-pink-600 h-2/3 px-3 mt-2 flex items-center justify-center rounded-full font-semibold cursor-pointer mr-4">
             <div
                 className={`text-white font-semibold hover:text-black`}
                 onClick={(e) => {

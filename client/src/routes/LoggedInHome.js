@@ -8,7 +8,7 @@ const HomeComponent = () => {
     const [cookie, setCookie] = useCookies(["token"]);
 
     return (
-        <div className="w-full h-full bg-app-black">
+        <div className="w-full h-full bg-app-black overflow-auto">
             <div className="flex p-8 justify-between font-semibold">
                 <div className='ml-10'>
                     <Link to="/home">
@@ -47,8 +47,8 @@ const HomeComponent = () => {
                         Start Applying
                     </Link>
                 </div>
-                <div className=''>
-                    {/* <img src={bg} style={{ width: "50%" }} /> */}
+                <div className='flex justify-center mt-10'>
+                    <img src={bg} className='opacity-75 mix-blend-screen w-3/4' />
                 </div>
             </div>
         </div>
