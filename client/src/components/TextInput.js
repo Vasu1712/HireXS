@@ -5,6 +5,7 @@ const TextInput = ({
     value,
     setValue,
     labelClassName,
+    type,
 }) => {
     return (
         <div
@@ -14,7 +15,7 @@ const TextInput = ({
                 {label}
             </label>
             <input
-                type="text"
+                type={type}
                 placeholder={placeholder}
                 className="text-black p-3 border border-gray-400 border-solid rounded placeholder-gray-500"
                 id={label}

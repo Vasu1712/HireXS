@@ -18,8 +18,9 @@ const LoginComponent = () => {
 		if (response && !response.err) {
 			const token = response.token;
 			const date = new Date();
-			date.setDate(date.getDate() + 30);
+			date.setDate(date.getDate() + 10);
 			setCookie('token', token, { path: '/', expires: date });
+			setCookie('username', response.username, { path: '/', expires: date });
 			alert('Logged in successfully');
 			navigate('/home');
 		} else {
@@ -28,7 +29,7 @@ const LoginComponent = () => {
 	};
 
 	return (
-		<div className='w-full h-full flex flex-col items-center bg-app-black text-white'>
+		<div className='w-full h-full flex flex-col items-center bg-app-black text-white overflow-auto'>
 			<div className='logo p-5 border-b border-solid border-gray-300 w-full flex justify-center'>
 				<Link to='/home'>
 					<img src={logo} />

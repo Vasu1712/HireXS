@@ -16,7 +16,7 @@ app.use(express.json());
 
 mongoose
 	.connect(
-		'mongodb+srv://mahirakajaria:<password>@cluster0.estoffi.mongodb.net/',
+		'mongodb+srv://mahirakajaria:' + process.env.MONGO_PASSWORD + '@cluster0.estoffi.mongodb.net/',
 		{
 			useNewUrlParser: true,
 			useUnifiedTopology: true,

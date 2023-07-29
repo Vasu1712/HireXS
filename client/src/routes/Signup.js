@@ -21,6 +21,10 @@ const SignupComponent = () => {
 			alert('Email and confirm email fields must match. Please check again');
 			return;
 		}
+		if (!email || !firstName || !lastName || !password || !username) {
+			alert('all the fields are required. Please check again');
+			return;
+		}
 		const data = { email, password, username, firstName, lastName };
 		const response = await makeUnauthenticatedPOSTRequest(
 			'/auth/register',
@@ -55,6 +59,7 @@ const SignupComponent = () => {
 					className='my-6'
 					value={email}
 					setValue={setEmail}
+					type='email'
 				/>
 				<TextInput
 					label='Confirm Email Address'
@@ -62,6 +67,7 @@ const SignupComponent = () => {
 					className='mb-6'
 					value={confirmEmail}
 					setValue={setConfirmEmail}
+					type='text'
 				/>
 				<TextInput
 					label='Username'
@@ -69,6 +75,7 @@ const SignupComponent = () => {
 					className='mb-6'
 					value={username}
 					setValue={setUsername}
+					type='text'
 				/>
 				<PasswordInput
 					label='Create Password'
@@ -83,6 +90,7 @@ const SignupComponent = () => {
 						className='mt-6'
 						value={firstName}
 						setValue={setFirstName}
+						type='text'
 					/>
 					<TextInput
 						label='Last Name'
@@ -90,6 +98,7 @@ const SignupComponent = () => {
 						className='mt-6'
 						value={lastName}
 						setValue={setLastName}
+						type='text'
 					/>
 				</div>
 				<div className=' w-full flex items-center justify-center mb-5'>
