@@ -4,6 +4,7 @@ import HomeComponent from "./routes/HomeComponent"
 import LoginComponent from "./routes/login";
 import SignupComponent from "./routes/Signup";
 import LoggedInHome from "./routes/LoggedInHome.js";
+import Jobs from "./routes/Jobs";
 import { useCookies } from "react-cookie";
 
 function App() {
@@ -15,10 +16,12 @@ function App() {
         {cookie.token && cookie.token !== undefined ? (
           <Routes>
             <Route path="/home" element=<LoggedInHome /> />
+            <Route path="/jobs" element=<Jobs /> />
             <Route path="*" element=<LoggedInHome /> />
           </Routes>
         ) : (
           <Routes>
+            <Route path="/jobs" element=<Jobs /> />
             <Route path="/home" element=<HomeComponent /> />
             <Route path="/login" element=<LoginComponent /> />
             <Route path="/signup" element=<SignupComponent /> />

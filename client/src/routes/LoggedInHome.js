@@ -25,7 +25,7 @@ const HomeComponent = () => {
                     <LogoutComp />
                     <Link to="/home" className="bg-white h-2/3 px-2 mt-2 flex items-center justify-center rounded-full font-semibold cursor-pointer mr-14">
                         <div>
-                            {cookie.username}
+                            {cookie.username[0]}
                         </div>
                     </Link>
                 </div>
@@ -43,7 +43,7 @@ const HomeComponent = () => {
                     A new LLM based application to ease out the HR process for Axis Bank
                 </div>
                 <div className='h-2/3 flex items-center justify-center rounded-full font-semibold bg-gradient-to-r from-red-400 to-pink-600 py-3 px-4 mt-6 '>
-                    <Link to="/login">
+                    <Link to="/jobs">
                         Start Applying
                     </Link>
                 </div>
