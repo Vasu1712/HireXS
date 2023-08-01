@@ -13,7 +13,7 @@ const HomeComponent = () => {
                 </div>
                 <div className='text-white text-xl mt-3'>
                     <Link to={"/home"} className='pr-10'>Home</Link>
-                    <Link to={"/jobs"} className='pr-10'>All Jobs</Link>
+                    <Link to={"/jobs"} className='pr-10'>Jobs</Link>
                     <Link to={"/past"} className='pr-10'>Past</Link>
                     <Link to={"/about"}>About</Link>
                 </div>

@@ -17,15 +17,15 @@ const HomeComponent = () => {
                 </div>
                 <div className='text-white text-xl mt-3'>
                     <Link to={"/home"} className='pr-10'>Home</Link>
-                    <Link to={"/jobs"} className='pr-10'>All Jobs</Link>
+                    <Link to={"/jobs"} className='pr-10'>Jobs</Link>
                     <Link to={"/past"} className='pr-10'>Past</Link>
                     <Link to={"/about"}>About</Link>
                 </div>
                 <div className='flex'>
                     <LogoutComp />
-                    <Link to="/home" className="bg-white h-2/3 px-2 mt-2 flex items-center justify-center rounded-full font-semibold cursor-pointer mr-14">
+                    <Link to="/home" className="bg-white h-2/3 px-3 mt-2 flex items-center justify-center rounded-full font-semibold cursor-pointer mr-14">
                         <div>
-                            {cookie.username[0]}
+                            {cookie.username[0].toUpperCase()}
                         </div>
                     </Link>
                 </div>

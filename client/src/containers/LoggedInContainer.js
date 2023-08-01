@@ -61,14 +61,14 @@ const LoggedInContainer = ({ children, curActiveScreen }) => {
                                 iconName={"heroicons-outline:pencil-alt"}
                                 displayText={"Apply"}
                                 active={curActiveScreen === "apply"}
-                                targetLink={"/apply"}
+                                // targetLink={"/apply"}
                                 color={"gray"}
                             />
                             <IconText
                                 iconName={"mdi:paperclip"}
                                 displayText={"Documents"}
                                 active={curActiveScreen === "documents"}
-                                targetLink={"/documents"}
+                                // targetLink={"/documents"}
                                 color={"gray"}
                             />
                         </div>
@@ -77,7 +77,7 @@ const LoggedInContainer = ({ children, curActiveScreen }) => {
                         <IconText
                             iconName={"ic:outline-settings"}
                             displayText={"Settings"}
-                            targetLink={"/settings"}
+                            // targetLink={"/settings"}
                             active={curActiveScreen === "settings"}
                             color={"gray"}
                         />
