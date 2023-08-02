@@ -5,6 +5,7 @@ import LoginComponent from "./routes/login";
 import SignupComponent from "./routes/Signup";
 import LoggedInHome from "./routes/LoggedInHome.js";
 import Jobs from "./routes/Jobs";
+import JobPage from "./routes/JobPage"
 import Contact from "./routes/Contact";
 import { useCookies } from "react-cookie";
 
@@ -17,6 +18,7 @@ function App() {
         {cookie.token && cookie.token !== undefined ? (
           <Routes>
             <Route path="/jobs" element=<Jobs /> />
+            <Route path="/jobs/:jobid" element=<JobPage /> />
             <Route path="/home" element=<LoggedInHome /> />
             <Route path="/help" element=<Contact /> />
             <Route path="*" element=<LoggedInHome /> />
