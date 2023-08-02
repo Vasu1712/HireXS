@@ -105,11 +105,13 @@ const Home = () => {
                                                     <img src="/axis.png" />
                                                 </Typography>
                                             </td>
-                                            <td className="p-4">
-                                                <Typography variant="small" color="blue-gray" className="font-normal">
-                                                    {job_id}
-                                                </Typography>
-                                            </td>
+                                            <Link to={"/jobs/" + JSON.parse(job_id)}>
+                                                <td className="p-4">
+                                                    <Typography variant="small" color="blue-gray" className="font-normal">
+                                                        {job_id}
+                                                    </Typography>
+                                                </td>
+                                            </Link>
                                             <td className="p-4">
                                                 <Typography variant="small" color="blue-gray" className="font-normal">
                                                     {job_role}
