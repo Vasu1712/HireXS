@@ -194,7 +194,7 @@ const Jobid = () => {
 					</div>
 				</div>
 			</div>
-			<div className='w-3/5 h-full bg-color5 ml-10 mt-5 p-5 rounded-xl text-white'>
+			<div className='w-3/5 h-full bg-color11 ml-10 mt-5 p-5 rounded-xl text-white'>
 				<div className='w-full'>
 					{/* Render the dropdown with options from the collegeList */}
 					<p className='font-semibold text-lg mt-6'>
@@ -218,7 +218,7 @@ const Jobid = () => {
 				<TextInput
 					label='CGPA'
 					placeholder='Grade Point (Out of 10)'
-					className='my-6'
+					className='my-6 '
 					value={gradePoint}
 					setValue={setGradePoint}
 					type='number'

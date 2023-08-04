@@ -35,7 +35,7 @@ const HomeComponent = () => {
                         HireXS
                     </div>
                 </div>
-                <div className='text-white mt-5'>
+                <div className='text-color12 mt-5'>
                     A new LLM based application to ease out the HR process for Axis Bank
                 </div>
                 <div className='h-2/3 flex items-center justify-center rounded-full font-semibold bg-gradient-to-r from-red-400 to-pink-600 py-3 px-4 mt-6 '>

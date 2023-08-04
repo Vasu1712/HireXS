@@ -13,7 +13,7 @@ function App() {
   const [cookie, setCookie] = useCookies(["token"]);
 
   return (
-    <div className="w-screen h-screen font-poppins">
+    <div className="w-screen h-screen font-poppins ">
       <BrowserRouter>
         {cookie.token && cookie.token !== undefined ? (
           <Routes>
