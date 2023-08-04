@@ -107,7 +107,7 @@ const Home = () => {
                                             </td>
                                             <Link to={"/jobs/" + JSON.parse(job_id)}>
                                                 <td className="p-4">
-                                                    <Typography variant="small" color="blue-gray" className="font-normal">
+                                                    <Typography variant="small" color="blue" className="font-normal no-underline hover:underline">
                                                         {job_id}
                                                     </Typography>
                                                 </td>

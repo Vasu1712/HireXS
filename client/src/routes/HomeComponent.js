@@ -12,10 +12,10 @@ const HomeComponent = () => {
                     </Link>
                 </div>
                 <div className='text-white text-xl mt-3'>
-                    <Link to={"/home"} className='pr-10'>Home</Link>
-                    <Link to={"/jobs"} className='pr-10'>Jobs</Link>
-                    <Link to={"/past"} className='pr-10'>Past</Link>
-                    <Link to={"/about"}>About</Link>
+                    <Link to={"/home"} className='pr-10 text-color6 active:text-white'>Home</Link>
+                    <Link to={"/jobs"} className='pr-10 text-color6 active:text-white'>Jobs</Link>
+                    <Link to={"/past"} className='pr-10 text-color6 active:text-white'>Past</Link>
+                    <Link to={"/about"} className='text-color6 active:text-white'>About</Link>
                 </div>
                 <div className='flex'>
                     <Link to="/signup" className="bg-white h-2/3 px-6 mt-2 flex items-center justify-center rounded-full font-semibold cursor-pointer mr-4">

@@ -76,16 +76,16 @@ const Jobid = () => {
 	return (
 		<LoggedInContainer curActiveScreen='home'>
 			<div className='flex flex-row'>
-				<div className='w-3/5 h-full bg-color5 ml-10 mr-16 p-5 rounded-xl text-white'>
+				<div className='w-3/5 h-full bg-color11 ml-10 mr-16 p-5 rounded-xl text-white'>
 					<div className='flex items-center'>
-						<div className='text-2xl font-semibold'>
+						<div className='text-4xl font-semibold mt-3 tracking-wide '>
 							Senior Software Engineer
 						</div>
-						<div className='ml-3'>(Job ID : {job_id})</div>
 					</div>
+					<div className='my-3 italic text-color12'>(Job ID : {job_id})</div>
 					<div>
-						<div className='font-semibold mt-3'>Job Description</div>
-						<div className='mt-1'>
+						<div className='font-medium mt-8 text-2xl tracking-wide '>Job Description</div>
+						<div className='mt-4 w-auto font-light text-color12 text-justify'>
 							Drives the execution of multiple business plans and projects by
 							identifying customer and operational needs; developing and
 							communicating business plans and priorities; removing barriers and
@@ -111,26 +111,26 @@ const Jobid = () => {
 							supporting community outreach events.
 						</div>
 					</div>
-					<div className='mt-2'>
-						<div className='flex items-center justify-start mt-1'>
-							<span className='font-semibold'>Role :</span>&nbsp; Front-end
+					<div className='mt-4'>
+						<div className='flex items-center justify-start mt-2 '>
+							<span className='font-medium italic tracking-wide'>Role :</span>&nbsp; Front-end
 							Developer
 						</div>
-						<div className='flex items-center justify-start mt-1'>
-							<span className='font-semibold'>Department :</span>&nbsp;
+						<div className='flex items-center justify-start mt-2'>
+							<span className='font-medium italic tracking-wide'>Department :</span>&nbsp;
 							Engineering
 						</div>
-						<div className='flex items-center justify-start mt-1'>
-							<span className='font-semibold'>Employment Type :</span>&nbsp;
+						<div className='flex items-center justify-start mt-2'>
+							<span className='font-medium italic tracking-wide'>Employment Type :</span>&nbsp;
 							Full Time, Permanent
 						</div>
-						<div className='flex items-center justify-start mt-1'>
-							<span className='font-semibold'>Role Category :</span>&nbsp;
+						<div className='flex items-center justify-start mt-2'>
+							<span className='font-medium italic tracking-wide'>Role Category :</span>&nbsp;
 							Software Development
 						</div>
 					</div>
 					<div className='mt-2'>
-						<div className='flex items-center font-semibold justify-start mt-1'>
+						<div className='flex items-center font-medium italic justify-start mt-2 tracking-wide'>
 							Education
 						</div>
 						<div className='flex items-center justify-start mt-1'>
@@ -141,8 +141,8 @@ const Jobid = () => {
 						</div>
 					</div>
 					<div>
-						<div className='font-semibold mt-3'>Required Skills</div>
-						<div className='mt-1'>
+						<div className='font-medium italic mt-3 tracking-wide'>Required Skills</div>
+						<div className='mt-1 text-color12'>
 							lorem Ipsum is simply dummy text; it is simply a placeholder for
 							others to connect real people with.
 						</div>
@@ -199,14 +199,17 @@ const Jobid = () => {
 				</div>
 			</div>
 			<div className='w-3/5 h-full bg-color5 ml-10 mt-5 p-5 rounded-xl text-white'>
-				<div>
+				<div className='w-full'>
 					{/* Render the dropdown with options from the collegeList */}
+					<p className='font-semibold text-lg mt-6'>
+						Institute Name
+					</p>
 					<select
-						className='my-6'
+						className='my-3 w-4/6 h-12 rounded px-2'
 						value={collegeName}
 						onChange={(e) => setCollegeName(e.target.value)}
-						style={{ color: 'black' }}>
-						<option value=''>Select a college</option>
+						style={{ color: '#838383' }}>
+						<option value='' className='text-gray-800'>Choose your institute from the dropdown </option>
 						{collegeList.map((college) => (
 							<option
 								key={college._id}
@@ -218,7 +221,7 @@ const Jobid = () => {
 				</div>
 				<TextInput
 					label='CGPA'
-					placeholder='CGPA'
+					placeholder='Grade Point (Out of 10)'
 					className='my-6'
 					value={gradePoint}
 					setValue={setGradePoint}
@@ -227,13 +230,14 @@ const Jobid = () => {
 				<TextInput
 					label='Google drive link for Resume '
 					placeholder='Resume URL'
-					className='my-6'
+					className='mt-12'
 					value={resumeLink}
 					setValue={setResumeLink}
 					type='text'
 				/>
+				<p className='text-xs mt-2 italic text-color6'>(* Please ensure submitting the URL after enabling sharing access to all)</p>
 				<button
-					className='h-12 bg-white rounded-2xl text-color1 px-20 font-medium text-lg flex items-center justify-center'
+					className='h-12 mt-12 my-6 bg-white rounded-2xl text-color1 px-20 font-medium text-lg flex items-center justify-center'
 					onClick={(e) => {
 						applyPosition();
 					}}>
