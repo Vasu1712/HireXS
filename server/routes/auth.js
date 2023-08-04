@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
+const JobModel = require('../models/Jobs');
+const CVModel = require('../models/CVanalysis');
 const bcrypt = require('bcrypt');
 const { getToken } = require('../utils/helpers');
 
@@ -57,27 +59,38 @@ router.post('/login', async (req, res) => {
 
 router.post('/registerjob', async (req, res) => {
 	const { collegeName, gradePoint, resumeLink, jobId } = req.body;
-
-	// Find the job using the provided jobId
+	const userId = req.user._id;
 	const job = await JobModel.findOne({ jobId });
+	const user = await User.findById(userId);
+
+	if (!req.user) {
+		return res.status(403).json({ error: 'User not authenticated' });
+	}
+
+	if (!user) {
+		return res.status(403).json({ error: 'User not found' });
+	}
 
 	if (!job) {
 		throw new Error('Job not found');
 	}
 
-	// Create a new CVanalysis object
-	const cvAnalysisData = {
-		grade: gradePoint,
-		instituteName: collegeName,
-		resume: resumeLink,
-		description: job.description, // Use the job's description
-	};
+	try {
+		const newCV = await CVModel.create({
+			grade: gradePoint,
+			instituteName: collegeName,
+			resume: resumeLink,
+			description: job.description,
+		});
 
-	// Save the CVanalysis data to the database
-	const cvAnalysis = new CVModel(cvAnalysisData);
-	const savedCVAnalysis = await cvAnalysis.save();
+		user.cv = newCV._id;
+		await user.save();
 
-	return savedCVAnalysis;
+		return res.status(200).json({ message: 'CV added successfully' });
+	} catch (error) {
+		console.error('Error adding CV:', error);
+		return res.status(500).json({ error: 'Internal server error' });
+	}
 });
 
 module.exports = router;
