@@ -10,7 +10,7 @@ const CVanalysis = new mongoose.Schema({
 		required: true,
 	},
 	resume: {
-		type: Date,
+		type: String,
 		required: true,
 	},
 	description: {

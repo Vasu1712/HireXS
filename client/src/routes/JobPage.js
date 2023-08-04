@@ -52,24 +52,20 @@ const Jobid = () => {
 			return;
 		}
 
-		const jobId = window.location.pathname.split('/').pop(); // Assuming the URL format is like http://localhost:3000/jobs/4324
+		try {
+			const data = { collegeName, gradePoint, resumeLink, jobId: job_id };
 
-		const data = { collegeName, gradePoint, resumeLink, jobId };
-		console.log('Data to be posted:', data); // Add this line to check if data is correct
-		const response = await makeUnauthenticatedPOSTRequest(
-			'/auth/registerjob',
-			data
-		);
-		if (response && !response.err) {
-			const token = response.token;
-			const date = new Date();
-			date.setDate(date.getDate() + 30);
-			setCookie('token', token, { path: '/', expires: date });
-			setCookie('username', response.username, { path: '/', expires: date });
-			alert('Success');
-			navigate('/home');
-		} else {
-			alert('Failure');
+			const response = await axios.post('/auth/registerjob', data);
+
+			if (response.status === 200) {
+				alert('Success');
+				navigate('/home');
+			} else {
+				alert('Failure');
+			}
+		} catch (error) {
+			console.error('Error applying for the position:', error);
+			alert('An error occurred while applying for the position');
 		}
 	};
 
