@@ -55,4 +55,29 @@ router.post('/login', async (req, res) => {
 	return res.status(200).json(userToReturn);
 });
 
+router.post('/registerjob', async (req, res) => {
+	const { collegeName, gradePoint, resumeLink, jobId } = req.body;
+
+	// Find the job using the provided jobId
+	const job = await JobModel.findOne({ jobId });
+
+	if (!job) {
+		throw new Error('Job not found');
+	}
+
+	// Create a new CVanalysis object
+	const cvAnalysisData = {
+		grade: gradePoint,
+		instituteName: collegeName,
+		resume: resumeLink,
+		description: job.description, // Use the job's description
+	};
+
+	// Save the CVanalysis data to the database
+	const cvAnalysis = new CVModel(cvAnalysisData);
+	const savedCVAnalysis = await cvAnalysis.save();
+
+	return savedCVAnalysis;
+});
+
 module.exports = router;

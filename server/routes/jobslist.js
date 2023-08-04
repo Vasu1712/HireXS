@@ -10,7 +10,7 @@ router.get('/jobs', async (req, res) => {
 	try {
 		const jobs = await JobModel.find({});
 		console.log(jobs);
-		res.json(jobs);
+		return res.json(jobs);
 	} catch (error) {
 		console.error('Error fetching jobs:', error);
 		res.status(500).json({ message: 'Error fetching jobs' });

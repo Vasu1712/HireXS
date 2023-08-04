@@ -22,10 +22,6 @@ const User = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
-	resume: {
-		type: String,
-		default: '',
-	},
 });
 
 const UserModel = mongoose.model('User', User);

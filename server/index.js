@@ -6,6 +6,7 @@ const passport = require('passport');
 const User = require('./models/User');
 const authRoutes = require('./routes/auth');
 const jobRoutes = require('./routes/jobslist');
+const instituteNames = require('./routes/institutenames');
 require('dotenv').config();
 const cors = require('cors');
 const app = express();
@@ -16,7 +17,9 @@ app.use(express.json());
 
 mongoose
 	.connect(
-		'mongodb+srv://mahirakajaria:' + process.env.MONGO_PASSWORD + '@cluster0.estoffi.mongodb.net/',
+		'mongodb+srv://mahirakajaria:' +
+			process.env.MONGO_PASSWORD +
+			'@cluster0.estoffi.mongodb.net/',
 		{
 			useNewUrlParser: true,
 			useUnifiedTopology: true,
@@ -53,6 +56,7 @@ app.get('/', (req, res) => {
 });
 app.use('/auth', authRoutes);
 app.use('/jobslist', jobRoutes);
+app.use('/institutenames', instituteNames);
 
 app.listen(port, () => {
 	console.log('App is running on port ' + port);
