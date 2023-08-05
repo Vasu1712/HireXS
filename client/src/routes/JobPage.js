@@ -29,9 +29,20 @@ const Jobid = () => {
 	const [copySuccess, setCopySuccess] = useState('');
 	const textAreaRef = useRef(null);
 
-	async function copyToClip() {
-		await navigator.clipboard.writeText(url);
-		setCopySuccess('Copied');
+	const [isAlertVisible, setIsAlertVisible] = useState(false);
+	const [copied, setCopied] = useState(false);
+	function copyToClip() {
+		setIsAlertVisible(true);
+		const el = document.createElement("input");
+		el.value = window.location.href;
+		document.body.appendChild(el);
+		el.select();
+		document.execCommand("copy");
+		document.body.removeChild(el);
+		setCopied(true);
+		setTimeout(() => {
+			setIsAlertVisible(false);
+		}, 2000);
 	}
 
 	useEffect(() => {
@@ -189,7 +200,10 @@ const Jobid = () => {
 							className='pt-1 text-xl'
 						/>
 						<div className='pl-2'>
-							<button onclick={copyToClip}>Share</button>
+							<button onClick={copyToClip}>Share</button>
+							{isAlertVisible && <div className='alert-container'>
+								<div className='alert-inner font-light italic'>Copied to Clipboard!</div>
+							</div>}
 						</div>
 					</div>
 				</div>
