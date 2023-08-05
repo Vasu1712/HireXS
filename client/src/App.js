@@ -24,6 +24,7 @@ function App() {
             <Route path="/jobs/:jobid" element=<JobPage /> />
             <Route path="/home" element=<LoggedInHome /> />
             <Route path="/past" element=<HRjobs /> />
+            <Route path="/past/:applicants" element=<Applicants /> />
             <Route path="/about" element=<About /> />
             <Route path="/help" element=<Contact /> />
             <Route path="*" element=<LoggedInHome /> />
