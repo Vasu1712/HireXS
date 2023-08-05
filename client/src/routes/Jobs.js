@@ -2,6 +2,7 @@ import LoggedInContainer from '../containers/LoggedInContainer';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
 import { Card, Typography } from '@material-tailwind/react';
+import { format } from 'date-fns';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
@@ -167,7 +168,7 @@ const Home = () => {
 														variant='small'
 														color='blue-gray'
 														className='font-normal'>
-														{applicationDate}
+                                                        {format(new Date(applicationDate), 'dd MMM yyyy')}
 													</Typography>
 												</td>
 												<td className='p-4'>
