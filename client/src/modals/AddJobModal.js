@@ -11,16 +11,18 @@ const AddJobModal = ({ closeModal }) => {
     const [location, setlocation] = useState("");
     const [salary, setsalary] = useState("");
     const [applicationDate, setapplicationDate] = useState("");
+    const [jobType, setjobType] = useState("");
+    const [experience, setexperience] = useState("");
 
     const navigate = useNavigate();
 
     const submitJob = async () => {
-        if (!jobId || !description || !location || !jobTitle || !salary || !applicationDate) {
+        if (!jobId || !description || !location || !jobTitle || !salary || !applicationDate || !jobType || !experience) {
             alert('All the fields are required. Please check again');
             return;
         }
         try {
-            const data = { jobId, jobTitle, location, salary, description, applicationDate };
+            const data = { jobId, jobTitle, location, salary, description, applicationDate, jobType, experience };
             console.log(data);
             const response = await makeAuthenticatedPOSTRequest('/jobslist/createjob', data);
 
@@ -63,9 +65,9 @@ const AddJobModal = ({ closeModal }) => {
                         setValue={setjobId}
                     />
                     <TextInput
-                        label="Job Position"
+                        label="Job Title"
                         labelClassName={"text-white"}
-                        placeholder="Job Position"
+                        placeholder="Job Title"
                         value={jobTitle}
                         setValue={setjobTitle}
                     />
@@ -77,25 +79,32 @@ const AddJobModal = ({ closeModal }) => {
                         setValue={setdescription}
                     />
                     <TextInput
-                        label="Job Role"
+                        label="Location"
                         labelClassName={"text-white"}
-                        placeholder="Job Role"
+                        placeholder="Location"
                         value={location}
                         setValue={setlocation}
                     />
                     <TextInput
-                        label="salary"
+                        label="Salary"
                         labelClassName={"text-white"}
-                        placeholder="Job Role"
+                        placeholder="Salary"
                         value={salary}
                         setValue={setsalary}
                     />
                     <TextInput
-                        label="Employee Type"
+                        label="Job Type"
                         labelClassName={"text-white"}
-                        placeholder="Job Role"
-                        value={applicationDate}
-                        setValue={setapplicationDate}
+                        placeholder="Job Type"
+                        value={jobType}
+                        setValue={setjobType}
+                    />
+                    <TextInput
+                        label="experience"
+                        labelClassName={"text-white"}
+                        placeholder="experience"
+                        value={experience}
+                        setValue={setexperience}
                     />
                     <div
                         className={`textInputDiv flex flex-col space-y-2 w-full text-white`}
