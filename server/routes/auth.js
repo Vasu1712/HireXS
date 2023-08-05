@@ -75,8 +75,8 @@ router.post(
 				instituteName: collegeName,
 				resume: resumeLink,
 				description: job.description,
-				owner: userId
 			});
+
 			user.cv = newCV._id;
 			await user.save();
 
