@@ -3,18 +3,11 @@ import { useParams } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import TextInput from '../components/TextInput';
 import { useState, useRef, useEffect } from 'react';
-import {
-	makeAuthenticatedPOSTRequest,
-	makeUnauthenticatedPOSTRequest,
-} from '../utils/serverHelper';
-import { Link, useNavigate } from 'react-router-dom';
+import { makeAuthenticatedPOSTRequest } from '../utils/serverHelper';
+import { useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
 import { format } from 'date-fns';
-import ClipboardJS from 'clipboard';
-// import { Link, animateScroll as scroll } from "react-scroll";
-import { Card, Typography } from '@material-tailwind/react';
-import { jobData } from './JobDetails';
 
 const Jobid = () => {
 	const [collegeName, setCollegeName] = useState('');
@@ -22,16 +15,12 @@ const Jobid = () => {
 	const [gradePoint, setGradePoint] = useState('');
 	const [resumeLink, setResumeLink] = useState('');
 	const [jobData, setJobData] = useState(null);
-	const [cookie, setCookie] = useCookies(['token']);
+
+	const ref = useRef(null);
 
 	const navigate = useNavigate();
 
 	const job_id = useParams().jobid;
-	const url = window.location.href;
-
-	const [copySuccess, setCopySuccess] = useState('');
-	const textAreaRef = useRef(null);
-
 	const [isAlertVisible, setIsAlertVisible] = useState(false);
 	const [copied, setCopied] = useState(false);
 	function copyToClip() {
@@ -99,6 +88,10 @@ const Jobid = () => {
 		}
 	};
 
+	const handleClick = () => {
+		ref.current?.scrollIntoView({ behavior: 'smooth' });
+	};
+
 	return (
 		<LoggedInContainer curActiveScreen='home'>
 			<div className='flex flex-row'>
@@ -118,32 +111,12 @@ const Jobid = () => {
 							{jobData?.description}
 						</div>
 					</div>
-					<div className='mt-4'>
-						<div className='flex items-center justify-start mt-2 '>
-							<span className='font-medium italic tracking-wide'>Role :</span>
-							&nbsp; {jobData?.jobTitle}
-						</div>
-						<div className='flex items-center justify-start mt-2'>
-							<span className='font-medium italic tracking-wide'>
-								Employment Type :
-							</span>
-							&nbsp; {jobData?.jobType}
-						</div>
-					</div>
-					<div>
-						<div className='font-medium italic mt-3 tracking-wide'>
-							Required Skills
-						</div>
-						<div className='mt-1 text-color12'>
-							lorem Ipsum is simply dummy text; it is simply a placeholder for
-							others to connect real people with.
-						</div>
-					</div>
 				</div>
 				<div>
-					<div className='h-12 bg-white rounded-2xl text-color1 px-20 font-medium text-lg flex items-center justify-center'>
+					<button className='h-12 bg-white rounded-2xl text-color1 px-20 font-medium text-lg flex items-center justify-center'
+						onClick={handleClick}>
 						Apply
-					</div>
+					</button>
 					<div className='text-white mt-4 flex'>
 						<Icon
 							icon='mdi:location'
@@ -163,14 +136,14 @@ const Jobid = () => {
 							icon='ri:graduation-cap-fill'
 							className='pt-1 text-xl'
 						/>
-						<div className='pl-2'>{jobData.experience}</div>
+						<div className='pl-2'>{jobData?.experience}</div>
 					</div>
 					<div className='text-white mt-4 flex'>
 						<Icon
 							icon='ic:baseline-email'
 							className='pt-1 text-xl'
 						/>
-						<div className='pl-2'>Last Date: {format(new Date(jobData.applicationDate), 'dd MMM yyyy')}</div>
+						<div className='pl-2'>Last Date: {jobData?.applicationDate}</div>
 					</div>
 					<div className='text-white mt-4 flex'>
 						<Icon
@@ -190,7 +163,7 @@ const Jobid = () => {
 					</div>
 				</div>
 			</div>
-			<div className='w-3/5 h-full bg-color11 ml-10 mt-5 p-5 rounded-xl text-white'>
+			<div ref={ref} className='w-3/5 h-full bg-color11 ml-10 mt-5 p-5 rounded-xl text-white'>
 				<div className='w-full'>
 					{/* Render the dropdown with options from the collegeList */}
 					<p className='font-semibold text-lg mt-6'>Institute Name</p>
