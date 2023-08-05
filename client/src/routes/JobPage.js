@@ -140,14 +140,14 @@ const Jobid = () => {
 							icon='ri:graduation-cap-fill'
 							className='pt-1 text-xl'
 						/>
-						<div className='pl-2'>{jobData.experience}</div>
+						<div className='pl-2'>{jobData?.experience}</div>
 					</div>
 					<div className='text-white mt-4 flex'>
 						<Icon
 							icon='ic:baseline-email'
 							className='pt-1 text-xl'
 						/>
-						<div className='pl-2'>Last Date: {format(new Date(jobData.applicationDate), 'dd MMM yyyy')}</div>
+						<div className='pl-2'>Last Date: {format(new Date(jobData?.applicationDate), 'dd MMM yyyy')}</div>
 					</div>
 					<div className='text-white mt-4 flex'>
 						<Icon
