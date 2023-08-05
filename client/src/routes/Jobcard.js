@@ -6,6 +6,7 @@ import {
     Button,
   } from "@material-tailwind/react";
   import { Icon } from '@iconify/react';
+import { Link } from "react-router-dom";
 
   export function Jobcard() {
     return (
@@ -58,7 +59,8 @@ import {
 		  </div>
         </CardBody>
         <CardFooter className="pt-0">
-          <a href="#" className="inline-block">
+          <a href="/past/applicants" className="inline-block">
+            <Link to={"/past/applicants"}>
             <Button size="sm" variant="text" className="flex items-center gap-2 text-white bg-color2">
              <p className="text-color14 p-1"> See Applicants </p>
               <svg
@@ -76,6 +78,7 @@ import {
                 />
               </svg>
             </Button>
+            </Link>
           </a>
         </CardFooter>
       </Card>

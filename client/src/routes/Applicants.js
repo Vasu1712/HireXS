@@ -11,7 +11,9 @@ const Applicants = () => {
                 <div className="mx-8 text-4xl font-semibold text-color6">
                     Applicants
                 </div>
-               
+               <div>
+                
+               </div>
             </div>
         </LoggedInContainer>
     );

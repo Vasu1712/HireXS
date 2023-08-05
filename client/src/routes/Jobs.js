@@ -132,34 +132,6 @@ const Home = () => {
                                 </tbody>
                             </table>
                         </Card>
-                        {/* <table className="w-full">
-                            <thead className="">
-                                <tr className="bg-color11 text-color12 border">
-                                    <th>Company</th>
-                                    <th>Job ID</th>
-                                    <th>Job Title</th>
-                                    <th>Date Posted</th>
-                                    <th>Location</th>
-                                </tr>
-                            </thead>
-                            <tbody className="text-color6">
-                                {recentOpenings.map((order) => (
-                                    <tr className="odd:bg-white even:bg-slate-50">
-                                        <td className="p-4">
-                                            <img src={order.img} />
-                                        </td>
-                                        <td>
-                                            {order.job_id}
-                                        </td>
-                                        <td>
-                                            {order.job_role}
-                                        </td>
-                                        <td>{order.date_posted}</td>
-                                        <td>{order.location}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table> */}
                     </div>
                 </div>
             </div>
