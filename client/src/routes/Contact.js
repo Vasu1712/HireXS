@@ -3,7 +3,7 @@ import LoggedInContainer from "../containers/LoggedInContainer";
 const contact = () => {
     return (
         <LoggedInContainer>
-            <div className="w-5/6 bg-gradient-to-r from-color1 to-color2 m-8 rounded-xl p-8">
+            <div className="w-5/6 bg-gradient-to-r from-color1 to-color2 ml-8 rounded-xl p-8">
                 <h3 className="fcf-h3 font-medium text-color6 text-4xl ">Contact Us</h3>
                 <div className="flex">
                     <form id="fcf-form-id" className="fcf-form-class mt-10" method="post" action="contact-form-process.php">
