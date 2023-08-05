@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 export function Jobcard() {
   return (
-    <Card className="mt-8 w-1/4 bg-black">
+    <Card className="mt-6 w-96 bg-black">
       <CardBody>
         <svg
           xmlns="http://www.w3.org/2000/svg"
