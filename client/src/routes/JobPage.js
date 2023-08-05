@@ -3,10 +3,18 @@ import { useParams } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import TextInput from '../components/TextInput';
 import { useState, useRef, useEffect } from 'react';
-import { makeAuthenticatedPOSTRequest } from '../utils/serverHelper';
-import { useNavigate } from 'react-router-dom';
-import { format } from 'date-fns';
+import {
+	makeAuthenticatedPOSTRequest,
+	makeUnauthenticatedPOSTRequest,
+} from '../utils/serverHelper';
+import { Link, useNavigate } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import axios from 'axios';
+import { format } from 'date-fns';
+import ClipboardJS from 'clipboard';
+// import { Link, animateScroll as scroll } from "react-scroll";
+import { Card, Typography } from '@material-tailwind/react';
+import { jobData } from './JobDetails';
 
 const Jobid = () => {
 	const [collegeName, setCollegeName] = useState('');
@@ -14,10 +22,15 @@ const Jobid = () => {
 	const [gradePoint, setGradePoint] = useState('');
 	const [resumeLink, setResumeLink] = useState('');
 	const [jobData, setJobData] = useState(null);
+	const [cookie, setCookie] = useCookies(['token']);
 
 	const navigate = useNavigate();
 
 	const job_id = useParams().jobid;
+	const url = window.location.href;
+
+	const [copySuccess, setCopySuccess] = useState('');
+	const textAreaRef = useRef(null);
 
 	const [isAlertVisible, setIsAlertVisible] = useState(false);
 	const [copied, setCopied] = useState(false);
@@ -52,9 +65,9 @@ const Jobid = () => {
 			.get('http://localhost:8080/jobslist/jobs/' + job_id)
 			.then((response) => {
 				setJobData(response.data);
+				console.log(jobData);
 			})
 			.catch((error) => {
-				console.log(error);
 				console.error('Error fetching job data:', error);
 			});
 	}, []);
@@ -92,6 +105,7 @@ const Jobid = () => {
 				<div className='w-3/5 h-full bg-color11 ml-10 mr-16 p-5 rounded-xl text-white'>
 					<div className='flex items-center'>
 						<div className='text-4xl font-semibold mt-3 tracking-wide '>
+							{console.log(jobData)}
 							{jobData?.jobTitle}
 						</div>
 					</div>
@@ -114,6 +128,15 @@ const Jobid = () => {
 								Employment Type :
 							</span>
 							&nbsp; {jobData?.jobType}
+						</div>
+					</div>
+					<div>
+						<div className='font-medium italic mt-3 tracking-wide'>
+							Required Skills
+						</div>
+						<div className='mt-1 text-color12'>
+							lorem Ipsum is simply dummy text; it is simply a placeholder for
+							others to connect real people with.
 						</div>
 					</div>
 				</div>
