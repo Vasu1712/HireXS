@@ -8,7 +8,7 @@ const HomeComponent = () => {
     const [cookie, setCookie] = useCookies(["token"]);
 
     return (
-        <div className="w-full h-full bg-gradient-to-r from-color1 to-color2 overflow-auto">
+        <div className="w-full h-full bg-app-black overflow-auto">
             <div className="flex p-8 justify-between font-semibold">
                 <div className='ml-10'>
                     <Link to="/home">

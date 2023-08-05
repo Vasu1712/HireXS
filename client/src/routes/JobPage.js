@@ -131,21 +131,6 @@ const Jobid = () => {
 							<span className='font-medium italic tracking-wide'>Employment Type :</span>&nbsp;
 							Full Time, Permanent
 						</div>
-						<div className='flex items-center justify-start mt-2'>
-							<span className='font-medium italic tracking-wide'>Role Category :</span>&nbsp;
-							Software Development
-						</div>
-					</div>
-					<div className='mt-2'>
-						<div className='flex items-center font-medium italic justify-start mt-2 tracking-wide'>
-							Education
-						</div>
-						<div className='flex items-center justify-start mt-1'>
-							<span className='font-semibold'>UG :</span>&nbsp; Any Graduate
-						</div>
-						<div className='flex items-center justify-start mt-1'>
-							<span className='font-semibold'>PG :</span>&nbsp; Any Graduate
-						</div>
 					</div>
 					<div>
 						<div className='font-medium italic mt-3 tracking-wide'>Required Skills</div>

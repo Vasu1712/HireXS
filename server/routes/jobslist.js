@@ -26,7 +26,7 @@ router.post(
 				return res.status(400).json({ message: 'Request body is empty' });
 			}
 
-			const existingJob = await JobModel.findOne({ jobId });
+			const existingJob = await JobModel.findOne({ jobId: req.body.jobId });
 
 			if (existingJob) {
 				return res
@@ -38,8 +38,9 @@ router.post(
 
 			res.json(newJob);
 		} catch (error) {
+			console.log(error);
 			console.error('Error creating job:', error);
-			res.status(500).json({ message: 'Error creating job' });
+			res.status(500).json({ message: { error } });
 		}
 	}
 );
