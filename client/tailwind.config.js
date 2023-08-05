@@ -28,6 +28,8 @@ module.exports = withMT({
         'color10': "#D1C7C7",
         'color11': "#262626",
         'color12': "#898989",
+        'color13': "#2626262",
+        'color14': "#EE4774",
       },
       spacing: {
         '128': '32rem', // following the standard of 128 / 4 = 32

@@ -7,6 +7,9 @@ import LoggedInHome from "./routes/LoggedInHome.js";
 import Jobs from "./routes/Jobs";
 import JobPage from "./routes/JobPage"
 import Contact from "./routes/Contact";
+import HRjobs from "./routes/Past";
+import Applicants from "./routes/Applicants";
+import About from "./routes/About";
 import { useCookies } from "react-cookie";
 
 function App() {
@@ -20,6 +23,8 @@ function App() {
             <Route path="/jobs" element=<Jobs /> />
             <Route path="/jobs/:jobid" element=<JobPage /> />
             <Route path="/home" element=<LoggedInHome /> />
+            <Route path="/past" element=<HRjobs /> />
+            <Route path="/about" element=<About /> />
             <Route path="/help" element=<Contact /> />
             <Route path="*" element=<LoggedInHome /> />
           </Routes>
