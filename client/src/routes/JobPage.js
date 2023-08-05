@@ -3,17 +3,10 @@ import { useParams } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import TextInput from '../components/TextInput';
 import { useState, useRef, useEffect } from 'react';
-import {
-	makeAuthenticatedPOSTRequest,
-	makeUnauthenticatedPOSTRequest,
-} from '../utils/serverHelper';
-import { Link, useNavigate } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
+import { makeAuthenticatedPOSTRequest } from '../utils/serverHelper';
+import { useNavigate } from 'react-router-dom';
+import { format } from 'date-fns';
 import axios from 'axios';
-import ClipboardJS from 'clipboard';
-// import { Link, animateScroll as scroll } from "react-scroll";
-import { Card, Typography } from '@material-tailwind/react';
-import { jobData } from './JobDetails';
 
 const Jobid = () => {
 	const [collegeName, setCollegeName] = useState('');
@@ -21,15 +14,10 @@ const Jobid = () => {
 	const [gradePoint, setGradePoint] = useState('');
 	const [resumeLink, setResumeLink] = useState('');
 	const [jobData, setJobData] = useState(null);
-	const [cookie, setCookie] = useCookies(['token']);
 
 	const navigate = useNavigate();
 
 	const job_id = useParams().jobid;
-	const url = window.location.href;
-
-	const [copySuccess, setCopySuccess] = useState('');
-	const textAreaRef = useRef(null);
 
 	const [isAlertVisible, setIsAlertVisible] = useState(false);
 	const [copied, setCopied] = useState(false);
@@ -61,12 +49,12 @@ const Jobid = () => {
 
 	useEffect(() => {
 		axios
-			.get(`http://localhost:8080/jobslist/${job_id}`)
+			.get('http://localhost:8080/jobslist/jobs/' + job_id)
 			.then((response) => {
 				setJobData(response.data);
-				console.log(jobData);
 			})
 			.catch((error) => {
+				console.log(error);
 				console.error('Error fetching job data:', error);
 			});
 	}, []);
@@ -104,7 +92,6 @@ const Jobid = () => {
 				<div className='w-3/5 h-full bg-color11 ml-10 mr-16 p-5 rounded-xl text-white'>
 					<div className='flex items-center'>
 						<div className='text-4xl font-semibold mt-3 tracking-wide '>
-							{console.log(jobData)}
 							{jobData?.jobTitle}
 						</div>
 					</div>
@@ -120,28 +107,13 @@ const Jobid = () => {
 					<div className='mt-4'>
 						<div className='flex items-center justify-start mt-2 '>
 							<span className='font-medium italic tracking-wide'>Role :</span>
-							&nbsp; Front-end Developer
-						</div>
-						<div className='flex items-center justify-start mt-2'>
-							<span className='font-medium italic tracking-wide'>
-								Department :
-							</span>
-							&nbsp; Engineering
+							&nbsp; {jobData?.jobTitle}
 						</div>
 						<div className='flex items-center justify-start mt-2'>
 							<span className='font-medium italic tracking-wide'>
 								Employment Type :
 							</span>
-							&nbsp; Full Time, Permanent
-						</div>
-					</div>
-					<div>
-						<div className='font-medium italic mt-3 tracking-wide'>
-							Required Skills
-						</div>
-						<div className='mt-1 text-color12'>
-							lorem Ipsum is simply dummy text; it is simply a placeholder for
-							others to connect real people with.
+							&nbsp; {jobData?.jobType}
 						</div>
 					</div>
 				</div>
@@ -154,35 +126,28 @@ const Jobid = () => {
 							icon='mdi:location'
 							className='pt-1 text-xl'
 						/>
-						<div className='pl-1'>Hyderabad</div>
+						<div className='pl-1'>{jobData?.location}</div>
 					</div>
 					<div className='text-white mt-4 flex'>
 						<Icon
 							icon='fa:suitcase'
 							className='pt-1'
 						/>
-						<div className='pl-2'>Full Time</div>
+						<div className='pl-2'>{jobData?.jobType}</div>
 					</div>
 					<div className='text-white mt-4 flex'>
 						<Icon
 							icon='ri:graduation-cap-fill'
 							className='pt-1 text-xl'
 						/>
-						<div className='pl-2'>0 - 2 yrs</div>
+						<div className='pl-2'>{jobData.experience}</div>
 					</div>
 					<div className='text-white mt-4 flex'>
 						<Icon
 							icon='ic:baseline-email'
 							className='pt-1 text-xl'
 						/>
-						<div className='pl-2'>Posted: 30 Jul 2023</div>
-					</div>
-					<div className='text-white mt-4 flex'>
-						<Icon
-							icon='ic:baseline-email'
-							className='pt-1 text-xl'
-						/>
-						<div className='pl-2'>Expires: 01 Aug 2023</div>
+						<div className='pl-2'>Last Date: {format(new Date(jobData.applicationDate), 'dd MMM yyyy')}</div>
 					</div>
 					<div className='text-white mt-4 flex'>
 						<Icon
