@@ -17,6 +17,19 @@ router.get('/jobs', async (req, res) => {
 	}
 });
 
+router.get('/jobs/:jobid', async (req, res) => {
+	try {
+		const job = await JobModel.findOne({ jobId: req.params.jobid });
+		if (!job) {
+			return res.status(404).json({ message: 'Job not found' });
+		}
+		return res.json(job);
+	} catch (error) {
+		console.error('Error fetching job:', error);
+		res.status(500).json({ message: 'Error fetching job' });
+	}
+});
+
 router.post(
 	'/createjob',
 	passport.authenticate('jwt', { session: false }),

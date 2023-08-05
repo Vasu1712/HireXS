@@ -20,9 +20,8 @@ const Jobid = () => {
 	const [collegeList, setCollegeList] = useState([]);
 	const [gradePoint, setGradePoint] = useState('');
 	const [resumeLink, setResumeLink] = useState('');
+	const [jobData, setJobData] = useState(null);
 	const [cookie, setCookie] = useCookies(['token']);
-	const [instituteNames, setInstituteNames] = useState([]);
-	const [selectedInstitute, setSelectedInstitute] = useState('');
 
 	const navigate = useNavigate();
 
@@ -60,6 +59,18 @@ const Jobid = () => {
 			});
 	}, []);
 
+	useEffect(() => {
+		axios
+			.get(`http://localhost:8080/jobslist/${job_id}`)
+			.then((response) => {
+				setJobData(response.data);
+				console.log(jobData);
+			})
+			.catch((error) => {
+				console.error('Error fetching job data:', error);
+			});
+	}, []);
+
 	const applyPosition = async () => {
 		if (!collegeName || !gradePoint || !resumeLink) {
 			alert('All the fields are required. Please check again');
@@ -93,7 +104,8 @@ const Jobid = () => {
 				<div className='w-3/5 h-full bg-color11 ml-10 mr-16 p-5 rounded-xl text-white'>
 					<div className='flex items-center'>
 						<div className='text-4xl font-semibold mt-3 tracking-wide '>
-							Senior Software Engineer
+							{console.log(jobData)}
+							{jobData?.jobTitle}
 						</div>
 					</div>
 					<div className='my-3 italic text-color12'>(Job ID : {job_id})</div>
@@ -102,29 +114,7 @@ const Jobid = () => {
 							Job Description
 						</div>
 						<div className='mt-4 w-auto font-light text-color12 text-justify'>
-							Drives the execution of multiple business plans and projects by
-							identifying customer and operational needs; developing and
-							communicating business plans and priorities; removing barriers and
-							obstacles that impact performance; providing resources;
-							identifying performance standards; measuring progress and
-							adjusting performance accordingly; developing contingency plans;
-							and demonstrating adaptability and supporting continuous learning.
-							Provides supervision and development opportunities for associates
-							by selecting and training; mentoring; assigning duties; building a
-							team-based work environment; establishing performance expectations
-							and conducting regular performance evaluations; providing
-							recognition and rewards; coaching for success and improvement; and
-							ensuring diversity awareness. Promotes and supports company
-							policies, procedures, mission, values, and standards of ethics and
-							integrity by training and providing direction to others in their
-							use and application; ensuring compliance with them; and utilizing
-							and supporting the Open Door Policy. Ensures business needs are
-							being met by evaluating the ongoing effectiveness of current
-							plans, programs, and initiatives; consulting with business
-							partners, managers, co-workers, or other key stakeholders;
-							soliciting, evaluating, and applying suggestions for improving
-							efficiency and cost-effectiveness; and participating in and
-							supporting community outreach events.
+							{jobData?.description}
 						</div>
 					</div>
 					<div className='mt-4'>
