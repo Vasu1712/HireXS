@@ -8,7 +8,7 @@ const TABLE_HEAD = ["Company", "Job ID", "Job Title", "Date Posted", "Location"]
 const recentOpenings = [
     {
         id: '1',
-        job_id: '4324',
+        job_id: '6354',
         job_role: 'Product Manager',
         date_posted: '2022-05-17',
         location: 'Gurugram'

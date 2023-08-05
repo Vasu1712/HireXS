@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import TextInput from '../components/TextInput';
 import { useState, useRef, useEffect } from 'react';
-import { makeUnauthenticatedPOSTRequest } from '../utils/serverHelper';
+import { makeAuthenticatedPOSTRequest, makeUnauthenticatedPOSTRequest } from '../utils/serverHelper';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
@@ -66,12 +66,13 @@ const Jobid = () => {
 		try {
 			const data = { collegeName, gradePoint, resumeLink, jobId: job_id };
 
-			const response = await axios.post('/auth/registerjob', data);
+			const response = await makeAuthenticatedPOSTRequest('/auth/registerjob', data);
 
-			if (response.status === 200) {
+			if (response && !response.error) {
 				alert('Success');
-				navigate('/home');
+				navigate('/jobs');
 			} else {
+				console.log(error);
 				alert('Failure');
 			}
 		} catch (error) {
