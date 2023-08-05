@@ -1,8 +1,7 @@
 import LoggedInContainer from "../containers/LoggedInContainer";
-import { Jobcard } from "./Jobcard";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
-import { Card, Typography, Checkbox } from "@material-tailwind/react";
+import { Checkbox } from "@material-tailwind/react";
 
 const Applicants = () => {
     return (

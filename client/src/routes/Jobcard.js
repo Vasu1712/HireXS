@@ -7,6 +7,7 @@ import {
 } from "@material-tailwind/react";
 import { Icon } from '@iconify/react';
 import { Link } from "react-router-dom";
+import { format } from 'date-fns';
 
 export function Jobcard({ JobTitle, JobId, location, JobType, Experience, LastDate }) {
   return (
@@ -55,7 +56,7 @@ export function Jobcard({ JobTitle, JobId, location, JobType, Experience, LastDa
             icon='ic:baseline-email'
             className='pt-1 text-xl'
           />
-          <div className='pl-2'>Expires: {LastDate}</div>
+          <div className='pl-2'>Expires: {format(new Date(LastDate), 'dd MMM yyyy')}</div>
         </div>
       </CardBody>
       <CardFooter className="pt-0">
