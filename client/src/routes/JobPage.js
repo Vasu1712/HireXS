@@ -72,7 +72,7 @@ const Jobid = () => {
 				alert('Success');
 				navigate('/jobs');
 			} else {
-				console.log(error);
+				console.log(response.error);
 				alert('Failure');
 			}
 		} catch (error) {
