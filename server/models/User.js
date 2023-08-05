@@ -21,12 +21,7 @@ const User = new mongoose.Schema({
 	username: {
 		type: String,
 		required: true,
-	},
-	cv: {
-		// Reference to the CV model
-		type: mongoose.Schema.Types.ObjectId,
-		ref: 'CVanalysis',
-	},
+	}
 });
 
 const UserModel = mongoose.model('User', User);

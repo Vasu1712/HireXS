@@ -17,6 +17,12 @@ const CVanalysis = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	owner: {
+		// Reference to the CV model
+		type: mongoose.Schema.Types.ObjectId,
+		ref: 'User',
+		required: true,
+	},
 });
 
 const CVModel = mongoose.model('CVanalysis', CVanalysis);
