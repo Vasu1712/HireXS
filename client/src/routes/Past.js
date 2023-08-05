@@ -1,13 +1,22 @@
 import LoggedInContainer from "../containers/LoggedInContainer";
 import AddJobModal from "../modals/AddJobModal";
 import { Jobcard } from "./Jobcard";
-import { useState } from "react";
-import { Icon } from "@iconify/react";
-import { Link } from "react-router-dom";
-import { Card, Typography, CardBody, CardFooter, Button } from "@material-tailwind/react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const HRjobs = () => {
     const [AddJobModalOpen, setAddJobModalOpen] = useState(false);
+    const [jobsData, setJobsData] = useState([]);
+    useEffect(() => {
+        axios
+            .get('http://localhost:8080/jobslist/jobs')
+            .then((response) => {
+                setJobsData(response.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching data:', error);
+            });
+    }, []);
     return (
         <div className="h-screen w-screen">
             {AddJobModalOpen && (
@@ -29,11 +38,16 @@ const HRjobs = () => {
                         List a new job
                     </button>
                     <div className="w-full ml-8 flex flex-wrap gap-6">
-                        <Jobcard />
-                        <Jobcard />
-                        <Jobcard />
-                        <Jobcard />
-                        <Jobcard />
+                        {jobsData.map(({ jobTitle, jobId, location, jobType, experience, applicationDate }) => (
+                            <Jobcard
+                                JobTitle={jobTitle}
+                                JobId={jobId}
+                                location={location}
+                                JobType={jobType}
+                                Experience={experience}
+                                LastDate={applicationDate}
+                            />
+                        ))}
                     </div>
                 </div>
             </LoggedInContainer>

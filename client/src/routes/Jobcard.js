@@ -8,7 +8,7 @@ import {
 import { Icon } from '@iconify/react';
 import { Link } from "react-router-dom";
 
-export function Jobcard() {
+export function Jobcard({ JobTitle, JobId, location, JobType, Experience, LastDate }) {
   return (
     <Card className="mt-8 w-1/4 bg-black">
       <CardBody>
@@ -26,36 +26,36 @@ export function Jobcard() {
           <path d="M5.26 17.242a.75.75 0 10-.897-1.203 5.243 5.243 0 00-2.05 5.022.75.75 0 00.625.627 5.243 5.243 0 005.022-2.051.75.75 0 10-1.202-.897 3.744 3.744 0 01-3.008 1.51c0-1.23.592-2.323 1.51-3.008z" />
         </svg>
         <Typography variant="h5" color="blue-gray" className="mb-2 text-white">
-          Senior Software Developer
+          {JobTitle}
         </Typography>
-        <div className='my-3 italic text-color12'>(Job ID : 4375)</div>
+        <div className='my-3 italic text-color12'>(Job ID : {JobId})</div>
         <div className='text-white mt-4 flex '>
           <Icon
             icon='mdi:location'
             className='pt-1 text-xl'
           />
-          <div className='pl-1'>Hyderabad</div>
+          <div className='pl-1'>{location}</div>
         </div>
         <div className='text-white mt-4 flex'>
           <Icon
             icon='fa:suitcase'
             className='pt-1'
           />
-          <div className='pl-2'>Full Time</div>
+          <div className='pl-2'>{JobType}</div>
         </div>
         <div className='text-white mt-4 flex'>
           <Icon
             icon='ri:graduation-cap-fill'
             className='pt-1 text-xl'
           />
-          <div className='pl-2'>0 - 2 yrs</div>
+          <div className='pl-2'>{Experience}</div>
         </div>
         <div className='text-white mt-4 flex'>
           <Icon
             icon='ic:baseline-email'
             className='pt-1 text-xl'
           />
-          <div className='pl-2'>Expires: 01 Aug 2023</div>
+          <div className='pl-2'>Expires: {LastDate}</div>
         </div>
       </CardBody>
       <CardFooter className="pt-0">
