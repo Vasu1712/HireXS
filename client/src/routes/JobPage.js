@@ -3,7 +3,10 @@ import { useParams } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import TextInput from '../components/TextInput';
 import { useState, useRef, useEffect } from 'react';
-import { makeAuthenticatedPOSTRequest, makeUnauthenticatedPOSTRequest } from '../utils/serverHelper';
+import {
+	makeAuthenticatedPOSTRequest,
+	makeUnauthenticatedPOSTRequest,
+} from '../utils/serverHelper';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 import axios from 'axios';
@@ -33,11 +36,11 @@ const Jobid = () => {
 	const [copied, setCopied] = useState(false);
 	function copyToClip() {
 		setIsAlertVisible(true);
-		const el = document.createElement("input");
+		const el = document.createElement('input');
 		el.value = window.location.href;
 		document.body.appendChild(el);
 		el.select();
-		document.execCommand("copy");
+		document.execCommand('copy');
 		document.body.removeChild(el);
 		setCopied(true);
 		setTimeout(() => {
@@ -66,13 +69,16 @@ const Jobid = () => {
 		try {
 			const data = { collegeName, gradePoint, resumeLink, jobId: job_id };
 
-			const response = await makeAuthenticatedPOSTRequest('/auth/registerjob', data);
+			const response = await makeAuthenticatedPOSTRequest(
+				'/auth/registerjob',
+				data
+			);
 
 			if (response && !response.error) {
 				alert('Success');
 				navigate('/jobs');
 			} else {
-				console.log(error);
+				console.log(response.error);
 				alert('Failure');
 			}
 		} catch (error) {
@@ -92,7 +98,9 @@ const Jobid = () => {
 					</div>
 					<div className='my-3 italic text-color12'>(Job ID : {job_id})</div>
 					<div>
-						<div className='font-medium mt-8 text-2xl tracking-wide '>Job Description</div>
+						<div className='font-medium mt-8 text-2xl tracking-wide '>
+							Job Description
+						</div>
 						<div className='mt-4 w-auto font-light text-color12 text-justify'>
 							Drives the execution of multiple business plans and projects by
 							identifying customer and operational needs; developing and
@@ -121,20 +129,26 @@ const Jobid = () => {
 					</div>
 					<div className='mt-4'>
 						<div className='flex items-center justify-start mt-2 '>
-							<span className='font-medium italic tracking-wide'>Role :</span>&nbsp; Front-end
-							Developer
+							<span className='font-medium italic tracking-wide'>Role :</span>
+							&nbsp; Front-end Developer
 						</div>
 						<div className='flex items-center justify-start mt-2'>
-							<span className='font-medium italic tracking-wide'>Department :</span>&nbsp;
-							Engineering
+							<span className='font-medium italic tracking-wide'>
+								Department :
+							</span>
+							&nbsp; Engineering
 						</div>
 						<div className='flex items-center justify-start mt-2'>
-							<span className='font-medium italic tracking-wide'>Employment Type :</span>&nbsp;
-							Full Time, Permanent
+							<span className='font-medium italic tracking-wide'>
+								Employment Type :
+							</span>
+							&nbsp; Full Time, Permanent
 						</div>
 					</div>
 					<div>
-						<div className='font-medium italic mt-3 tracking-wide'>Required Skills</div>
+						<div className='font-medium italic mt-3 tracking-wide'>
+							Required Skills
+						</div>
 						<div className='mt-1 text-color12'>
 							lorem Ipsum is simply dummy text; it is simply a placeholder for
 							others to connect real people with.
@@ -187,9 +201,13 @@ const Jobid = () => {
 						/>
 						<div className='pl-2'>
 							<button onClick={copyToClip}>Share</button>
-							{isAlertVisible && <div className='alert-container'>
-								<div className='alert-inner font-light italic'>Copied to Clipboard!</div>
-							</div>}
+							{isAlertVisible && (
+								<div className='alert-container'>
+									<div className='alert-inner font-light italic'>
+										Copied to Clipboard!
+									</div>
+								</div>
+							)}
 						</div>
 					</div>
 				</div>
@@ -197,15 +215,17 @@ const Jobid = () => {
 			<div className='w-3/5 h-full bg-color11 ml-10 mt-5 p-5 rounded-xl text-white'>
 				<div className='w-full'>
 					{/* Render the dropdown with options from the collegeList */}
-					<p className='font-semibold text-lg mt-6'>
-						Institute Name
-					</p>
+					<p className='font-semibold text-lg mt-6'>Institute Name</p>
 					<select
 						className='my-3 w-4/6 h-12 rounded px-2'
 						value={collegeName}
 						onChange={(e) => setCollegeName(e.target.value)}
 						style={{ color: '#838383' }}>
-						<option value='' className='text-gray-800'>Choose your institute from the dropdown </option>
+						<option
+							value=''
+							className='text-gray-800'>
+							Choose your institute from the dropdown{' '}
+						</option>
 						{collegeList.map((college) => (
 							<option
 								key={college._id}
@@ -231,7 +251,10 @@ const Jobid = () => {
 					setValue={setResumeLink}
 					type='text'
 				/>
-				<p className='text-xs mt-2 italic text-color6'>(* Please ensure submitting the URL after enabling sharing access to all)</p>
+				<p className='text-xs mt-2 italic text-color6'>
+					(* Please ensure submitting the URL after enabling sharing access to
+					all)
+				</p>
 				<button
 					className='h-12 mt-12 my-6 bg-white rounded-2xl text-color1 px-20 font-medium text-lg flex items-center justify-center'
 					onClick={(e) => {
