@@ -7,6 +7,36 @@ const bcrypt = require('bcrypt');
 const { getToken } = require('../utils/helpers');
 const passport = require('passport');
 
+// GET request to fetch CV analysis models along with the email ID of the user
+router.get(
+	'/cvanalysis',
+	passport.authenticate('jwt', { session: false }),
+	async (req, res) => {
+		try {
+			const cvAnalyses = await CVModel.find({})
+				.populate('owner', 'email username')
+				.exec();
+
+			const cvAnalysesWithUserData = cvAnalyses.map((cv) => {
+				const { owner, ...cvData } = cv._doc;
+				return {
+					...cvData,
+					owner: {
+						email: owner.email,
+						username: owner.username,
+					},
+				};
+			});
+
+			return res.status(200).json(cvAnalysesWithUserData);
+		} catch (error) {
+			console.error('Error fetching CV analyses:', error);
+			return res.status(500).json({ error: 'Internal server error' });
+		}
+	}
+);
+
+// POST request to  register the user to teh portal from signup form
 router.post('/register', async (req, res) => {
 	const { email, password, firstName, lastName, username } = req.body;
 
@@ -58,6 +88,7 @@ router.post('/login', async (req, res) => {
 	return res.status(200).json(userToReturn);
 });
 
+// POST request to allow users to upload their cv and details for a particular job
 router.post(
 	'/registerjob',
 	passport.authenticate('jwt', { session: false }),
@@ -75,6 +106,7 @@ router.post(
 				instituteName: collegeName,
 				resume: resumeLink,
 				description: job.description,
+				owner: userId,
 			});
 
 			user.cv = newCV._id;

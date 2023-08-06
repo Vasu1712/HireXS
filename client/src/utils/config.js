@@ -1,1 +1,1 @@
-export const backendUrl = 'https://hirexs-backend.onrender.com';
+export const backendUrl = 'http://localhost:8080';
