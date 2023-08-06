@@ -62,13 +62,10 @@ const Applicants = () => {
 						))
 					) : (
 						// Display the default applicant when the list is empty
-						<div className='m-8 p-2 w-2/3 flex justify-between rounded-xl bg-color1'>
-							<Checkbox
-								color='#EE4774'
-								ripple={true}
-							/>
-							<div className='mt-3 mx-12 text-white grow'>Sandeep Kumar</div>
-							<div className='mt-3 mx-12 text-white flex-none'>8.5</div>
+						<div className='m-8 p-2 w-2/3 h-14 flex justify-between rounded-xl bg-color1'>
+							<input type="checkbox" className="w-4 ml-4 accent-pink-500 rounded-2xl" />
+							<div className='mt-2 mx-12 text-white grow'>Sandeep Kumar</div>
+							<div className='mt-2 mx-12 text-white flex-none'>8.5</div>
 						</div>
 					)}
 				</div>
