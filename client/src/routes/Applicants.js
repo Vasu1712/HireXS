@@ -3,21 +3,21 @@ import LoggedInContainer from '../containers/LoggedInContainer';
 import { Icon } from '@iconify/react';
 import { Link, useParams } from 'react-router-dom';
 import { Checkbox } from '@material-tailwind/react';
+import axios from 'axios';
 
 const Applicants = () => {
 	const [applicants, setApplicants] = useState([]);
 	const { jobId } = useParams();
 
 	useEffect(() => {
-		// Fetch the job details from the server using the API
-		fetch(`/api/jobs/${jobId}`)
-			.then((response) => response.json())
-			.then((jobDetails) => {
-				// Now you have the job details, you can use jobDetails.description to filter the applicants
-				fetch('http://localhost:8080/auth/cvanalysis')
-					.then((response) => response.json())
-					.then((data) => {
-						// Filter the applicants based on the fetched job's description
+		axios
+			.get(`/api/jobs/${jobId}`)
+			.then((response) => {
+				const jobDetails = response.data;
+				axios
+					.get('http://localhost:8080/auth/cvanalysis')
+					.then((response) => {
+						const data = response.data;
 						const filteredApplicants = data.filter(
 							(applicant) => applicant.description === jobDetails.description
 						);
