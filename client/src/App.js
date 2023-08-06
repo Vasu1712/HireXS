@@ -7,7 +7,7 @@ import LoggedInHome from './routes/LoggedInHome.js';
 import Jobs from './routes/Jobs';
 import JobPage from './routes/JobPage';
 import Contact from './routes/Contact';
-import HRjobs from './routes/Past';
+import HRjobs from './routes/HRJobs';
 import Applicants from './routes/Applicants';
 import About from './routes/About';
 import { useCookies } from 'react-cookie';
@@ -22,7 +22,7 @@ function App() {
 					<Routes>
 						<Route
 							path='/jobs'
-							element=<Jobs />
+							element={cookie.access === 'admin' ? (<HRjobs />) : <Jobs />}
 						/>
 						<Route
 							path='/jobs/:jobid'

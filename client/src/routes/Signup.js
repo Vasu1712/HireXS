@@ -25,7 +25,7 @@ const SignupComponent = () => {
 			alert('all the fields are required. Please check again');
 			return;
 		}
-		const data = { email, password, username, firstName, lastName };
+		const data = { email, password, username, firstName, lastName, access: "user" };
 		const response = await makeUnauthenticatedPOSTRequest(
 			'/auth/register',
 			data
@@ -33,9 +33,10 @@ const SignupComponent = () => {
 		if (response && !response.err) {
 			const token = response.token;
 			const date = new Date();
-			date.setDate(date.getDate() + 30);
+			date.setDate(date.getDate() + 5);
 			setCookie('token', token, { path: '/', expires: date });
 			setCookie('username', response.username, { path: '/', expires: date });
+			setCookie('access', response.access, { path: '/', expires: date });
 			alert('Success');
 			navigate('/home');
 		} else {

@@ -38,8 +38,9 @@ const HRjobs = () => {
                         List a new job
                     </button>
                     <div className="w-full ml-8 flex flex-wrap gap-6">
-                        {jobsData.map(({ jobTitle, jobId, location, jobType, experience, applicationDate }) => (
+                        {jobsData.map(({ jobTitle, jobId, location, jobType, experience, applicationDate, _id }) => (
                             <Jobcard
+                                key={_id}
                                 JobTitle={jobTitle}
                                 JobId={jobId}
                                 location={location}

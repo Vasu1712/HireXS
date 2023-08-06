@@ -38,7 +38,13 @@ export function Jobcard({
 					className='mb-2 text-white'>
 					{JobTitle}
 				</Typography>
-				<div className='my-3 italic text-color12'>(Job ID : {JobId})</div>
+				<div className='my-3 italic text-color12'>
+					<Link to={'/jobs/' + JobId}>
+						<span className='border-b-2 border-color12'>
+							(Job ID : {JobId})
+						</span>
+					</Link>
+				</div>
 				<div className='text-white mt-4 flex '>
 					<Icon
 						icon='mdi:location'
@@ -97,6 +103,6 @@ export function Jobcard({
 					</Link>
 				</a>
 			</CardFooter>
-		</Card>
+		</Card >
 	);
 }

@@ -18,9 +18,10 @@ const LoginComponent = () => {
 		if (response && !response.err) {
 			const token = response.token;
 			const date = new Date();
-			date.setDate(date.getDate() + 10);
+			date.setDate(date.getDate() + 5);
 			setCookie('token', token, { path: '/', expires: date });
 			setCookie('username', response.username, { path: '/', expires: date });
+			setCookie('access', response.access, { path: '/', expires: date });
 			alert('Logged in successfully');
 			navigate('/home');
 		} else {

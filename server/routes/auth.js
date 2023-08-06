@@ -38,7 +38,7 @@ router.get(
 
 // POST request to  register the user to teh portal from signup form
 router.post('/register', async (req, res) => {
-	const { email, password, firstName, lastName, username } = req.body;
+	const { email, password, firstName, lastName, username, access } = req.body;
 
 	const user = await User.findOne({ email: email });
 
@@ -55,6 +55,7 @@ router.post('/register', async (req, res) => {
 		firstName,
 		lastName,
 		username,
+		access
 	};
 	const newUser = await User.create(newUserData);
 	console.log(newUserData);
@@ -62,7 +63,6 @@ router.post('/register', async (req, res) => {
 	const token = await getToken(email, newUser);
 
 	const userToReturn = { ...newUser.toJSON(), token };
-	console.log(userToReturn);
 	delete userToReturn.password;
 	return res.status(200).json(userToReturn);
 });

@@ -22,6 +22,10 @@ const User = new mongoose.Schema({
 		type: String,
 		required: true,
 	},
+	access: {
+		type: String,
+		required: true
+	}
 });
 
 const UserModel = mongoose.model('User', User);

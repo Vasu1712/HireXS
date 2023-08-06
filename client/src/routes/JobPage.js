@@ -54,7 +54,6 @@ const Jobid = () => {
 			.get('http://localhost:8080/jobslist/jobs/' + job_id)
 			.then((response) => {
 				setJobData(response.data);
-				console.log(jobData);
 			})
 			.catch((error) => {
 				console.error('Error fetching job data:', error);
@@ -79,7 +78,7 @@ const Jobid = () => {
 				alert('Success');
 				navigate('/jobs');
 			} else {
-				console.log(response.error);
+				console.error(response.error);
 				alert('Failure');
 			}
 		} catch (error) {
@@ -98,7 +97,6 @@ const Jobid = () => {
 				<div className='w-3/5 h-full bg-color11 ml-10 mr-16 p-5 rounded-xl text-white'>
 					<div className='flex items-center'>
 						<div className='text-4xl font-semibold mt-3 tracking-wide '>
-							{console.log(jobData)}
 							{jobData?.jobTitle}
 						</div>
 					</div>

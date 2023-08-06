@@ -9,7 +9,6 @@ router.use(passport.initialize());
 router.get('/jobs', async (req, res) => {
 	try {
 		const jobs = await JobModel.find({});
-		console.log(jobs);
 		return res.json(jobs);
 	} catch (error) {
 		console.error('Error fetching jobs:', error);
@@ -51,7 +50,6 @@ router.post(
 
 			res.json(newJob);
 		} catch (error) {
-			console.log(error);
 			console.error('Error creating job:', error);
 			res.status(500).json({ message: { error } });
 		}
