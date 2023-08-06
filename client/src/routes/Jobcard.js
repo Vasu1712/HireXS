@@ -3,7 +3,7 @@ import {
 	CardBody,
 	CardFooter,
 	Typography,
-	Button,
+	Button, Badge
 } from '@material-tailwind/react';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
@@ -20,6 +20,7 @@ export function Jobcard({
 	return (
 		<Card className='mt-8 w-1/4 bg-black'>
 			<CardBody>
+                <div className='flex justify-between'>
 				<svg
 					xmlns='http://www.w3.org/2000/svg'
 					viewBox='0 0 24 24'
@@ -32,6 +33,7 @@ export function Jobcard({
 					/>
 					<path d='M5.26 17.242a.75.75 0 10-.897-1.203 5.243 5.243 0 00-2.05 5.022.75.75 0 00.625.627 5.243 5.243 0 005.022-2.051.75.75 0 10-1.202-.897 3.744 3.744 0 01-3.008 1.51c0-1.23.592-2.323 1.51-3.008z' />
 				</svg>
+                </div>
 				<Typography
 					variant='h5'
 					color='blue-gray'
@@ -76,7 +78,7 @@ export function Jobcard({
 					</div>
 				</div>
 			</CardBody>
-			<CardFooter className='pt-0'>
+			<CardFooter className='pt-0 flex justify-between'>
 				<a
 					href={`/past/applicants/${JobId}`}
 					className='inline-block'>
@@ -102,6 +104,7 @@ export function Jobcard({
 						</Button>
 					</Link>
 				</a>
+                <Icon icon="mdi:delete" color="#ee4774" className='mt-1 p-2 hover:bg-color12 rounded-full'  width="40" height="40"/>
 			</CardFooter>
 		</Card >
 	);
