@@ -92,6 +92,7 @@ const Applicants = () => {
 									<tr>
 										<th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Name</th>
 										<th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Institute Name</th>
+										<th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CGPA</th>
 										<th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Resume Score</th>
 										<th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Assessment Score</th>
 										<th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Resume</th>
@@ -103,6 +104,7 @@ const Applicants = () => {
 										<tr key={applicant._id}>
 											<td className="px-4 py-4 whitespace-nowrap">{`${applicant.owner.firstName} ${applicant.owner.lastName}`}</td>
 											<td className="px-4 py-4 whitespace-nowrap">{applicant.instituteName}</td>
+											<td className="px-4 py-4 whitespace-nowrap">{applicant.grade}</td>
 											<td className="px-4 py-4 whitespace-nowrap">{(applicant.score * 100).toPrecision(5)}</td>
 											<td></td>
 											<td className="px-4 py-4 whitespace-nowrap">
@@ -116,7 +118,7 @@ const Applicants = () => {
 														testLink(applicant.owner.email)
 													}}
 												>
-													Send Test Link
+													Test Link
 												</button>
 											</td>
 											<td>
@@ -125,7 +127,7 @@ const Applicants = () => {
 														interviewLink(applicant.owner.email)
 													}}
 												>
-													Send Interview Mail
+													Interview Mail
 												</button>
 											</td>
 										</tr>
