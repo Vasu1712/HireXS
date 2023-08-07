@@ -48,7 +48,7 @@ const AddJobModal = ({ closeModal }) => {
             onClick={closeModal}
         >
             <div
-                className="bg-app-black w-1/3 rounded-md p-8 mt-auto"
+                className="bg-app-black w-1/2 rounded-md p-8 mt-auto"
                 onClick={(e) => {
                     e.stopPropagation();
                 }}
@@ -56,7 +56,7 @@ const AddJobModal = ({ closeModal }) => {
                 <div className="text-white mb-5 font-semibold text-lg">
                     Add Job Listing
                 </div>
-                <div className="space-y-4 flex flex-col justify-center items-center">
+                <div className="space-y-2 flex flex-col justify-center items-center">
                     <TextInput
                         label="Job ID"
                         labelClassName={"text-white"}
@@ -100,9 +100,9 @@ const AddJobModal = ({ closeModal }) => {
                         setValue={setjobType}
                     />
                     <TextInput
-                        label="experience"
+                        label="Experience"
                         labelClassName={"text-white"}
-                        placeholder="experience"
+                        placeholder="Experience"
                         value={experience}
                         setValue={setexperience}
                     />

@@ -98,31 +98,27 @@ export function Jobcard({
 				</div>
 			</CardBody>
 			<CardFooter className='pt-0 flex justify-between'>
-				<a
-					href={`/past/applicants/${JobId}`}
-					className='inline-block'>
-					<Link to={`/past/applicants/${JobId}`}>
-						<Button
-							size='sm'
-							variant='text'
-							className='flex items-center gap-2 text-white bg-color2'>
-							<p className='text-color14 p-1'> See Applicants </p>
-							<svg
-								xmlns='http://www.w3.org/2000/svg'
-								fill='none'
-								viewBox='0 0 24 24'
-								strokeWidth={2}
-								stroke='#EE4774'
-								className='h-4 w-4'>
-								<path
-									strokeLinecap='round'
-									strokeLinejoin='round'
-									d='M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3'
-								/>
-							</svg>
-						</Button>
-					</Link>
-				</a>
+				<Link to={`/jobs/applicants/${JobId}`}>
+					<Button
+						size='sm'
+						variant='text'
+						className='flex items-center gap-2 text-white bg-color2'>
+						<p className='text-color14 p-1'> See Applicants </p>
+						<svg
+							xmlns='http://www.w3.org/2000/svg'
+							fill='none'
+							viewBox='0 0 24 24'
+							strokeWidth={2}
+							stroke='#EE4774'
+							className='h-4 w-4'>
+							<path
+								strokeLinecap='round'
+								strokeLinejoin='round'
+								d='M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3'
+							/>
+						</svg>
+					</Button>
+				</Link>
 				<button onClick={handleDelete}>
 					<Icon icon="mdi:delete" color="#ee4774" className='mt-1 p-2 hover:bg-color12 rounded-full pb-2' width="40" height="40" />
 				</button>

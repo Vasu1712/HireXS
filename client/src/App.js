@@ -33,11 +33,7 @@ function App() {
 							element=<LoggedInHome />
 						/>
 						<Route
-							path='/past'
-							element=<HRjobs />
-						/>
-						<Route
-							path='/past/applicants/:jobId'
+							path='/jobs/applicants/:jobId'
 							element=<Applicants />
 						/>
 						<Route
