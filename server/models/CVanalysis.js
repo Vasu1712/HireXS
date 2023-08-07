@@ -1,6 +1,10 @@
 const mongoose = require('mongoose');
 
-const CVanalysis = new mongoose.Schema({
+const CVSchema = new mongoose.Schema({
+	jobId: {
+		type: String,
+		required: true,
+	},
 	grade: {
 		type: Number,
 		required: true,
@@ -18,13 +22,12 @@ const CVanalysis = new mongoose.Schema({
 		required: true,
 	},
 	owner: {
-		//reference to user
 		type: mongoose.Schema.Types.ObjectId,
 		ref: 'User',
 		required: true,
 	},
 });
 
-const CVModel = mongoose.model('CVanalysis', CVanalysis);
+const CVModel = mongoose.model('CV', CVSchema);
 
 module.exports = CVModel;

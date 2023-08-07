@@ -4,32 +4,30 @@ import { Icon } from '@iconify/react';
 import { Link, useParams } from 'react-router-dom';
 import { Checkbox } from '@material-tailwind/react';
 import axios from 'axios';
+import { makeAuthenticatedGETRequest } from '../utils/serverHelper';
 
 const Applicants = () => {
 	const [applicants, setApplicants] = useState([]);
 	const { jobId } = useParams();
 
 	useEffect(() => {
-		axios
-			.get(`/api/jobs/${jobId}`)
-			.then((response) => {
-				const jobDetails = response.data;
-				axios
-					.get('http://localhost:8080/auth/cvanalysis')
-					.then((response) => {
-						const data = response.data;
-						const filteredApplicants = data.filter(
-							(applicant) => applicant.description === jobDetails.description
-						);
-						setApplicants(filteredApplicants);
-					})
-					.catch((error) => {
-						console.error('Error fetching data:', error);
-					});
-			})
-			.catch((error) => {
-				console.error('Error fetching job details:', error);
-			});
+		const url = `/auth/getapplicants/${jobId}`;
+
+		async function fetchData() {
+			try {
+				const response = await makeAuthenticatedGETRequest(url);
+
+				const jobDetails = response;
+				const filteredApplicants = jobDetails.filter(
+					(applicant) => applicant.jobId === jobId
+				);
+				setApplicants(filteredApplicants);
+			} catch (error) {
+				console.error('Error:', error);
+			}
+		}
+
+		fetchData();
 	}, [jobId]);
 
 	return (
@@ -49,7 +47,6 @@ const Applicants = () => {
 								key={applicant._id}
 								className='m-8 p-2 w-2/3 flex justify-between rounded-xl bg-color1'>
 								<Checkbox
-									color='#EE4774'
 									ripple={true}
 								/>
 								<div className='mt-3 mx-12 text-white grow'>
@@ -62,10 +59,8 @@ const Applicants = () => {
 						))
 					) : (
 						// Display the default applicant when the list is empty
-						<div className='m-8 p-2 w-2/3 h-14 flex justify-between rounded-xl bg-color1'>
-							<input type="checkbox" className="w-4 ml-4 accent-pink-500 rounded-2xl" />
-							<div className='mt-2 mx-12 text-white grow'>Sandeep Kumar</div>
-							<div className='mt-2 mx-12 text-white flex-none'>8.5</div>
+						<div className='m-8 p-2 w-2/3 h-14 flex justify-center rounded-xl bg-color1'>
+							<div className='mt-2 mx-12 text-white grow'>No Applications!!</div>
 						</div>
 					)}
 				</div>
