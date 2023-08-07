@@ -1,6 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const JobModel = require('../models/Jobs');
+const CVModel = require('../models/CVanalysis');
 
 const router = express.Router();
 
@@ -36,6 +37,7 @@ router.delete('/jobs/delete/:jobid', async (req, res) => {
 			return res.status(404).json({ message: 'Job not found' });
 		}
 		const deletedJob = await JobModel.deleteOne({ _id: job._id });
+		const deleteApplicants = await CVModel.deleteMany({ jobId: job.jobId });
 		if (deletedJob.deletedCount === 0) {
 			return res.status(404).json({ message: 'Job not found' });
 		}

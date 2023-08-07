@@ -4,7 +4,7 @@ const User = require('../models/User');
 const JobModel = require('../models/Jobs');
 const CVModel = require('../models/CVanalysis');
 const bcrypt = require('bcrypt');
-const { getToken } = require('../utils/helpers');
+const { getToken, getScore } = require('../utils/helpers');
 const passport = require('passport');
 
 // POST request to  register the user to teh portal from signup form
@@ -70,6 +70,12 @@ router.post(
 		try {
 			const job = await JobModel.findOne({ jobId: jobId });
 
+			var desc = job?.description;
+			var new_desc = desc.replace(/ /g, '%');
+			var new_college = collegeName.replace(/ /g, '%');
+			const fetchUrl = '/CV?description=' + new_desc + '&email=' + job?.email + '&cgpa=' + gradePoint + '&inst=' + new_college + '&CV=' + resumeLink;
+
+			const score = await getScore(fetchUrl);
 			if (!job) {
 				return res.status(404).json({ error: 'Job not found' });
 			}
@@ -81,6 +87,7 @@ router.post(
 				resume: resumeLink,
 				description: job.description,
 				owner: userId,
+				score: score.CV_score,
 			});
 
 			const user = await User.findById(userId);
@@ -109,7 +116,7 @@ router.get(
 			}
 
 			const cvAnalyses = await CVModel.find({ jobId: job.jobId })
-				.populate('owner', 'email username')
+				.populate('owner', 'firstName lastName email username')
 				.exec();
 
 			const cvAnalysesWithUserData = cvAnalyses.map((cv) => {
@@ -119,6 +126,8 @@ router.get(
 					owner: {
 						email: owner.email,
 						username: owner.username,
+						firstName: owner.firstName,
+						lastName: owner.lastName,
 					},
 				};
 			});

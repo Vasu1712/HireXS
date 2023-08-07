@@ -1,4 +1,4 @@
-import { backendUrl } from './config';
+import { backendUrl, llmApiUrl } from './config';
 
 export const makeUnauthenticatedPOSTRequest = async (route, body) => {
 	const response = await fetch(backendUrl + route, {
@@ -57,4 +57,15 @@ const getToken = () => {
 		'$1'
 	);
 	return accessToken;
+};
+
+export const makeApiGetRequest = async (route) => {
+	const response = await fetch(llmApiUrl + route, {
+		method: 'GET',
+		headers: {
+
+		},
+	});
+	const formattedResponse = await response.json();
+	return formattedResponse;
 };

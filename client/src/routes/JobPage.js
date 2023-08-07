@@ -3,11 +3,9 @@ import { useParams } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import TextInput from '../components/TextInput';
 import { useState, useRef, useEffect } from 'react';
-import { makeAuthenticatedPOSTRequest } from '../utils/serverHelper';
+import { makeApiGetRequest, makeAuthenticatedPOSTRequest } from '../utils/serverHelper';
 import { useNavigate } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
 import axios from 'axios';
-import { format } from 'date-fns';
 
 const Jobid = () => {
 	const [collegeName, setCollegeName] = useState('');
@@ -15,6 +13,7 @@ const Jobid = () => {
 	const [gradePoint, setGradePoint] = useState('');
 	const [resumeLink, setResumeLink] = useState('');
 	const [jobData, setJobData] = useState(null);
+	const [cvAnalysis, setcvAnalysis] = useState('');
 
 	const ref = useRef(null);
 
@@ -61,6 +60,26 @@ const Jobid = () => {
 	}, []);
 
 	const applyPosition = async () => {
+		// var desc = jobData?.description;
+		// var new_desc = desc.replace(/ /g, '%');
+		// var new_college = collegeName.replace(/ /g, '%');
+		// const fetchUrl = '/CV?description=' + new_desc + '&email=' + jobData?.email + '&cgpa=' + gradePoint + '&inst=' + new_college + '&CV=' + resumeLink;
+
+		// const res = makeApiGetRequest(fetchUrl);
+		// console.log(res);
+		// alert("cl");
+
+		// axios
+		// 	.get(fetchUrl)
+		// 	.then((response) => {
+		// 		console.log(response);
+		// 		cvAnalysis(response);
+		// 	})
+		// 	.catch((error) => {
+		// 		console.error('Error fetching job data:', error);
+		// 	});
+		// alert("clicked");
+
 		if (!collegeName || !gradePoint || !resumeLink) {
 			alert('All the fields are required. Please check again');
 			return;

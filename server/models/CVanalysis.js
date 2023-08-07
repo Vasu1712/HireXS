@@ -26,6 +26,10 @@ const CVSchema = new mongoose.Schema({
 		ref: 'User',
 		required: true,
 	},
+	score: {
+		type: Number,
+		required: true,
+	}
 });
 
 const CVModel = mongoose.model('CV', CVSchema);
