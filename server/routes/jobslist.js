@@ -29,6 +29,23 @@ router.get('/jobs/:jobid', async (req, res) => {
 	}
 });
 
+router.delete('/jobs/delete/:jobid', async (req, res) => {
+	try {
+		const job = await JobModel.findOne({ jobId: req.params.jobid });
+		if (!job) {
+			return res.status(404).json({ message: 'Job not found' });
+		}
+		const deletedJob = await JobModel.deleteOne({ _id: job._id });
+		if (deletedJob.deletedCount === 0) {
+			return res.status(404).json({ message: 'Job not found' });
+		}
+		return res.status(200).json({ success: true, message: 'Job deleted successfully' });
+	} catch (error) {
+		console.error('Error deleting job:', error);
+		res.status(500).json({ message: 'Error deleting job' });
+	}
+});
+
 router.post(
 	'/createjob',
 	passport.authenticate('jwt', { session: false }),

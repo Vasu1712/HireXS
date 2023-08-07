@@ -44,7 +44,7 @@ const HomeComponent = () => {
                 </div>
                 <div className='h-2/3 flex items-center justify-center rounded-full font-semibold bg-gradient-to-r from-red-400 to-pink-600 py-3 px-4 mt-6 '>
                     <Link to="/jobs">
-                        Start Applying
+                        {cookie.access === 'admin' ? ("Manage Jobs") : ("Start Applying")}
                     </Link>
                 </div>
                 <div className='flex justify-center mt-10'>

@@ -3,13 +3,14 @@ import AddJobModal from "../modals/AddJobModal";
 import { Jobcard } from "./Jobcard";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { backendUrl } from "../utils/config";
 
 const HRjobs = () => {
     const [AddJobModalOpen, setAddJobModalOpen] = useState(false);
     const [jobsData, setJobsData] = useState([]);
     useEffect(() => {
         axios
-            .get('http://localhost:8080/jobslist/jobs')
+            .get(backendUrl + '/jobslist/jobs')
             .then((response) => {
                 setJobsData(response.data);
             })

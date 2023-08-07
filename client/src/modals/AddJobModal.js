@@ -23,12 +23,12 @@ const AddJobModal = ({ closeModal }) => {
         }
         try {
             const data = { jobId, jobTitle, location, salary, description, applicationDate, jobType, experience };
-            console.log(data);
             const response = await makeAuthenticatedPOSTRequest('/jobslist/createjob', data);
 
             if (response && !response.error) {
                 alert('Success');
-                navigate('/jobs');
+                closeModal();
+                window.location.reload();
             } else {
                 alert('Failure');
             }
@@ -123,7 +123,7 @@ const AddJobModal = ({ closeModal }) => {
                     Create
                 </button>
             </div>
-        </div >
+        </div>
     );
 }
 
