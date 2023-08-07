@@ -4,7 +4,7 @@ const User = require('../models/User');
 const JobModel = require('../models/Jobs');
 const CVModel = require('../models/CVanalysis');
 const bcrypt = require('bcrypt');
-const { getToken, getScore } = require('../utils/helpers');
+const { getToken, getScore, testLink, interviewLink } = require('../utils/helpers');
 const passport = require('passport');
 
 // POST request to  register the user to teh portal from signup form
@@ -73,7 +73,8 @@ router.post(
 			var desc = job?.description;
 			var new_desc = desc.replace(/ /g, '%');
 			var new_college = collegeName.replace(/ /g, '%');
-			const fetchUrl = '/CV?description=' + new_desc + '&email=' + job?.email + '&cgpa=' + gradePoint + '&inst=' + new_college + '&CV=' + resumeLink;
+			console.log(new_college);
+			const fetchUrl = '/CV?description=' + new_desc + '&email=' + req.user?.email + '&cgpa=' + gradePoint + '&inst=' + new_college + '&CV=' + resumeLink;
 
 			const score = await getScore(fetchUrl);
 			if (!job) {
@@ -99,6 +100,46 @@ router.post(
 			console.error('Error adding CV:', error);
 			return res.status(500).json({ error: 'Internal server error' });
 		}
+	}
+);
+
+router.post(
+	'/testlink',
+	passport.authenticate('jwt', { session: false }),
+	async (req, res) => {
+		const email = req.body.email;
+		try {
+			const stat = testLink(email);
+			if (stat.status === 200) {
+				return res.status(200).json({ message: "Email sent" });
+			}
+		}
+		catch (error) {
+			console.error('Error sending mail:', error);
+			return res.status(500).json({ error: 'Internal server error' });
+		}
+
+		return res.status(200).json({ message: "Email sent successfully" });
+	}
+);
+
+router.post(
+	'/interviewlink',
+	passport.authenticate('jwt', { session: false }),
+	async (req, res) => {
+		const email = req.body.email;
+		try {
+			const stat = interviewLink(email);
+			if (stat.status === 200) {
+				return res.status(200).json({ message: "Email sent" });
+			}
+		}
+		catch (error) {
+			console.error('Error sending mail:', error);
+			return res.status(500).json({ error: 'Internal server error' });
+		}
+
+		return res.status(200).json({ message: "Email sent successfully" });
 	}
 );
 
