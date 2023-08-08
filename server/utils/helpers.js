@@ -11,7 +11,7 @@ exports.getToken = async (email, user) => {
 	return token;
 };
 
-const llmApiUrl = 'https://b107-110-235-216-64.ngrok-free.app';
+const llmApiUrl = 'https://axisapi.onrender.com';
 exports.getScore = async (url) => {
 	const response = await fetch(llmApiUrl + url, {
 		method: 'GET'

@@ -56,7 +56,7 @@ const AddJobModal = ({ closeModal }) => {
                 <div className="text-white mb-5 font-semibold text-lg">
                     Add Job Listing
                 </div>
-                <div className="space-y-2 flex flex-col justify-center items-center">
+                <div className="space-y-2 flex flex-col justify-center">
                     <TextInput
                         label="Job ID"
                         labelClassName={"text-white"}
@@ -71,13 +71,25 @@ const AddJobModal = ({ closeModal }) => {
                         value={jobTitle}
                         setValue={setjobTitle}
                     />
-                    <TextInput
-                        label="Job Description"
-                        labelClassName={"text-white"}
-                        placeholder="Job Description"
-                        value={description}
-                        setValue={setdescription}
-                    />
+                    <div
+                        className={"textInputDiv flex flex-col space-y-2 w-full"}
+                    >
+                        <label className={"font-semibold text-white"}>
+                            Description
+                        </label>
+                        <textarea
+                            placeholder="Description"
+                            className="text-black p-3 border border-gray-400 border-solid rounded placeholder-gray-500"
+                            id="Description"
+                            value={description}
+                            onChange={(e) => {
+                                setdescription(e.target.value);
+                            }}
+                        />
+                    </div>
+                    <div className="flex justify-end">
+                        <button className=" text-white border rounded-xl w-1/3 text-sm font-light">Suggest Better Description</button>
+                    </div>
                     <TextInput
                         label="Location"
                         labelClassName={"text-white"}
