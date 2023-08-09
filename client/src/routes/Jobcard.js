@@ -30,7 +30,6 @@ export function Jobcard({
 			alert('Job Deleted');
 			window.location.reload();
 		} else {
-			console.log(error);
 			alert('Failure');
 		}
 	}
