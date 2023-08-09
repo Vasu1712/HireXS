@@ -4,7 +4,7 @@ const User = require('../models/User');
 const JobModel = require('../models/Jobs');
 const CVModel = require('../models/CVanalysis');
 const bcrypt = require('bcrypt');
-const { getToken, getScore, testLink, interviewLink } = require('../utils/helpers');
+const { getToken, getScore, testLink, interviewLink, newDescription } = require('../utils/helpers');
 const passport = require('passport');
 
 // POST request to  register the user to teh portal from signup form
@@ -73,7 +73,6 @@ router.post(
 			var desc = job?.description;
 			var new_desc = desc.replace(/ /g, '%');
 			var new_college = collegeName.replace(/ /g, '%');
-			console.log(new_college);
 			const fetchUrl = '/CV?description=' + new_desc + '&email=' + req.user?.email + '&cgpa=' + gradePoint + '&inst=' + new_college + '&CV=' + resumeLink;
 
 			const score = await getScore(fetchUrl);
@@ -176,6 +175,26 @@ router.get(
 			return res.status(200).json(cvAnalysesWithUserData);
 		} catch (error) {
 			console.error('Error fetching CV analyses:', error);
+			return res.status(500).json({ error: 'Internal server error' });
+		}
+	}
+);
+
+//get description with changes
+router.post(
+	'/getdescription',
+	passport.authenticate('jwt', { session: false }),
+	async (req, res) => {
+		const { description, jobTitle } = req.body;
+		try {
+			var desc = description.replace(/ /g, '%');
+			var job_role = jobTitle.replace(/ /g, '%');
+			const fetchUrl = '/Paraphrasejd?role=' + job_role + '&description=' + desc;
+			const new_description = await newDescription(fetchUrl);
+			return res.status(200).json({ Description: new_description.JD });
+		}
+		catch (error) {
+			console.error('Error getting description', error);
 			return res.status(500).json({ error: 'Internal server error' });
 		}
 	}

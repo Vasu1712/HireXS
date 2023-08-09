@@ -95,7 +95,7 @@ const Applicants = () => {
 										<th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CGPA</th>
 										<th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Resume Score</th>
 										<th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Assessment Score</th>
-										<th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Resume</th>
+										{/* <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Resume</th> */}
 										<th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
 									</tr>
 								</thead>
@@ -105,13 +105,25 @@ const Applicants = () => {
 											<td className="px-4 py-4 whitespace-nowrap">{`${applicant.owner.firstName} ${applicant.owner.lastName}`}</td>
 											<td className="px-4 py-4 whitespace-nowrap">{applicant.instituteName}</td>
 											<td className="px-4 py-4 whitespace-nowrap">{applicant.grade}</td>
-											<td className="px-4 py-4 whitespace-nowrap">{(applicant.score * 100).toPrecision(5)}</td>
-											<td></td>
 											<td className="px-4 py-4 whitespace-nowrap">
+												<span className='flex'>
+													{(applicant.score * 100).toPrecision(5)}
+													&nbsp;
+													<button aria-label="Open Resume">
+														<a href={applicant.resume} target="_blank" rel="noopener noreferrer">
+															<span className="text-indigo-600 cursor-pointer" title="Open Resume">
+																<Icon icon="mdi:open-in-new" />
+															</span>
+														</a>
+													</button>
+												</span>
+											</td>
+											<td></td>
+											{/* <td className="px-4 py-4 whitespace-nowrap">
 												<a href={applicant.resume} target="_blank" rel="noopener noreferrer">
 													<Icon icon="mdi:open-in-new" className="text-indigo-600 cursor-pointer" />
 												</a>
-											</td>
+											</td> */}
 											<td>
 												<button className='bg-gray-300 rounded-xl px-3 mt-4 text-black'
 													onClick={(e) => {

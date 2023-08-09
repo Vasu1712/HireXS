@@ -20,6 +20,14 @@ exports.getScore = async (url) => {
 	return formattedResponse;
 }
 
+exports.newDescription = async (url) => {
+	const response = await fetch(llmApiUrl + url, {
+		method: 'POST'
+	});
+	const formattedResponse = await response.json();
+	return formattedResponse;
+}
+
 exports.testLink = async (email) => {
 	const response = await fetch(llmApiUrl + '/TestMail?email=' + email, {
 		method: 'POST'

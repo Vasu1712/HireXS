@@ -1,8 +1,6 @@
 import TextInput from "../components/TextInput";
 import { useState } from "react";
-import { makeAuthenticatedPOSTRequest } from "../utils/serverHelper";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { makeAuthenticatedGETRequest, makeAuthenticatedPOSTRequest } from "../utils/serverHelper";
 
 const AddJobModal = ({ closeModal }) => {
     const [jobId, setjobId] = useState("");
@@ -13,8 +11,6 @@ const AddJobModal = ({ closeModal }) => {
     const [applicationDate, setapplicationDate] = useState("");
     const [jobType, setjobType] = useState("");
     const [experience, setexperience] = useState("");
-
-    const navigate = useNavigate();
 
     const submitJob = async () => {
         if (!jobId || !description || !location || !jobTitle || !salary || !applicationDate || !jobType || !experience) {
@@ -35,6 +31,27 @@ const AddJobModal = ({ closeModal }) => {
         } catch (error) {
             console.error('Error create new job:', error);
             alert('An error occurred while creating job');
+        }
+    }
+
+    const getDescription = async () => {
+        if (!description || !jobTitle) {
+            alert('Description and Job Title must be provided');
+            return;
+        }
+        try {
+            const data = { description, jobTitle };
+            const response = await makeAuthenticatedPOSTRequest('/auth/getdescription', data);
+            if (response && !response.error) {
+                alert('Success');
+                console.log(response.Description);
+                setdescription(response.Description);
+            } else {
+                alert('Failure');
+            }
+        } catch (error) {
+            console.error('Error generating new desription', error);
+            alert('An error occured while generating new description');
         }
     }
 
@@ -88,7 +105,10 @@ const AddJobModal = ({ closeModal }) => {
                         />
                     </div>
                     <div className="flex justify-end">
-                        <button className=" text-white border rounded-xl w-1/3 text-sm font-light">Suggest Better Description</button>
+                        <button className=" text-white border rounded-xl w-1/3 text-sm font-light"
+                            onClick={getDescription}>
+                            Suggest Better Description
+                        </button>
                     </div>
                     <TextInput
                         label="Location"
@@ -124,7 +144,7 @@ const AddJobModal = ({ closeModal }) => {
                         <label for="date" className='font-semibold'>
                             Last Date to Register
                         </label>
-                        <input type="date" id="date" name="date" class="border-gray-300 text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2 rounded-md shadow-sm placeholder-gray-500"
+                        <input type="date" id="date" name="date" className="border-gray-300 text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2 rounded-md shadow-sm placeholder-gray-500"
                             onChange={handleDateChange} />
                     </div>
                 </div>
