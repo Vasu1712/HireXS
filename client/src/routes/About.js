@@ -21,7 +21,7 @@ const style = {
     {
         id: '2',
         name: 'Aibhinav Upadhay',
-        img:'/profile/Aibhi.jpg',
+        img:'/profile/Aibhinav.png',
         linkedin: '',
         github: '',
         email: '',
