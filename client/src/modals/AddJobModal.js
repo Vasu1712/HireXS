@@ -1,8 +1,6 @@
 import TextInput from "../components/TextInput";
 import { useState } from "react";
-import { makeAuthenticatedPOSTRequest } from "../utils/serverHelper";
-import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { makeAuthenticatedGETRequest, makeAuthenticatedPOSTRequest } from "../utils/serverHelper";
 
 const AddJobModal = ({ closeModal }) => {
     const [jobId, setjobId] = useState("");
@@ -13,8 +11,6 @@ const AddJobModal = ({ closeModal }) => {
     const [applicationDate, setapplicationDate] = useState("");
     const [jobType, setjobType] = useState("");
     const [experience, setexperience] = useState("");
-
-    const navigate = useNavigate();
 
     const submitJob = async () => {
         if (!jobId || !description || !location || !jobTitle || !salary || !applicationDate || !jobType || !experience) {
@@ -38,6 +34,27 @@ const AddJobModal = ({ closeModal }) => {
         }
     }
 
+    const getDescription = async () => {
+        if (!description || !jobTitle) {
+            alert('Description and Job Title must be provided');
+            return;
+        }
+        try {
+            const data = { description, jobTitle };
+            const response = await makeAuthenticatedPOSTRequest('/auth/getdescription', data);
+            if (response && !response.error) {
+                alert('Success');
+                console.log(response.Description);
+                setdescription(response.Description);
+            } else {
+                alert('Failure');
+            }
+        } catch (error) {
+            console.error('Error generating new desription', error);
+            alert('An error occured while generating new description');
+        }
+    }
+
     const handleDateChange = (event) => {
         setapplicationDate(event.target.value);
     };
@@ -56,7 +73,7 @@ const AddJobModal = ({ closeModal }) => {
                 <div className="text-white mb-5 font-semibold text-lg">
                     Add Job Listing
                 </div>
-                <div className="space-y-2 flex flex-col justify-center items-center">
+                <div className="space-y-2 flex flex-col justify-center">
                     <TextInput
                         label="Job ID"
                         labelClassName={"text-white"}
@@ -71,13 +88,28 @@ const AddJobModal = ({ closeModal }) => {
                         value={jobTitle}
                         setValue={setjobTitle}
                     />
-                    <TextInput
-                        label="Job Description"
-                        labelClassName={"text-white"}
-                        placeholder="Job Description"
-                        value={description}
-                        setValue={setdescription}
-                    />
+                    <div
+                        className={"textInputDiv flex flex-col space-y-2 w-full"}
+                    >
+                        <label className={"font-semibold text-white"}>
+                            Description
+                        </label>
+                        <textarea
+                            placeholder="Description"
+                            className="text-black p-3 border border-gray-400 border-solid rounded placeholder-gray-500"
+                            id="Description"
+                            value={description}
+                            onChange={(e) => {
+                                setdescription(e.target.value);
+                            }}
+                        />
+                    </div>
+                    <div className="flex justify-end">
+                        <button className=" text-white border rounded-xl w-1/3 text-sm font-light"
+                            onClick={getDescription}>
+                            Suggest Better Description
+                        </button>
+                    </div>
                     <TextInput
                         label="Location"
                         labelClassName={"text-white"}
@@ -112,7 +144,7 @@ const AddJobModal = ({ closeModal }) => {
                         <label for="date" className='font-semibold'>
                             Last Date to Register
                         </label>
-                        <input type="date" id="date" name="date" class="border-gray-300 text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2 rounded-md shadow-sm placeholder-gray-500"
+                        <input type="date" id="date" name="date" className="border-gray-300 text-gray-900 focus:ring-indigo-500 focus:border-indigo-500 block w-full p-2 rounded-md shadow-sm placeholder-gray-500"
                             onChange={handleDateChange} />
                     </div>
                 </div>

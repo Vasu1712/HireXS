@@ -11,10 +11,18 @@ exports.getToken = async (email, user) => {
 	return token;
 };
 
-const llmApiUrl = 'https://b107-110-235-216-64.ngrok-free.app';
+const llmApiUrl = 'https://axisapi.onrender.com';
 exports.getScore = async (url) => {
 	const response = await fetch(llmApiUrl + url, {
 		method: 'GET'
+	});
+	const formattedResponse = await response.json();
+	return formattedResponse;
+}
+
+exports.newDescription = async (url) => {
+	const response = await fetch(llmApiUrl + url, {
+		method: 'POST'
 	});
 	const formattedResponse = await response.json();
 	return formattedResponse;

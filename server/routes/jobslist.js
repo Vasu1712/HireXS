@@ -2,7 +2,6 @@ const express = require('express');
 const passport = require('passport');
 const JobModel = require('../models/Jobs');
 const CVModel = require('../models/CVanalysis');
-
 const router = express.Router();
 
 router.use(passport.initialize());
