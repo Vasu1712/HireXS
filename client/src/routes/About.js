@@ -1,7 +1,7 @@
 import LoggedInContainer from "../containers/LoggedInContainer";
 import { Icon } from "@iconify/react";
 import { Link } from "react-router-dom";
-import { Card, Typography, CardHeader, CardBody, CardFooter, Tooltip } from "@material-tailwind/react";
+import { Card, Typography, CardHeader, CardBody, CardFooter, Tooltip, Carousel, IconButton } from "@material-tailwind/react";
 // import { Carousel } from 'react-carousel3d';
 
 const style = {
@@ -9,57 +9,80 @@ const style = {
     height: 296,
   };
 
+  const cardInfo = [
+    {
+        id: '1',
+        name: 'Abhishek R Konnaraju',
+        img:'/profile/Abhishek.jpg',
+        linkedin: '',
+        github: '',
+        email: '',
+    },
+    {
+        id: '2',
+        name: 'Aibhinav Upadhay',
+        img:'/profile/Aibhi.jpg',
+        linkedin: '',
+        github: '',
+        email: '',
+    },
+    {
+        id: '3',
+        name: 'Mahika Khushwaha',
+        img:'/profile/Mahika.jpg',
+        linkedin: '',
+        github: '',
+        email: '',
+    },
+    {
+        id: '4',
+        name: 'Shivang Patel',
+        img:'/profile/Shivang.png',
+        linkedin: '',
+        github: '',
+        email: '',
+    },
+    {
+        id: '5',
+        name: 'Vasu Pal',
+        img:'/profile/Vasu.png',
+        linkedin: '',
+        github: '',
+        email: '',
+    },
+  ]
+
 const About = () => {
     return (
         <LoggedInContainer curActiveScreen="home">
-          <Card className="w-96 m-32">
-            <CardHeader floated={false} className="h-80">
-                <img src="/profile/img1.jpg" alt="profile" />
-            </CardHeader>
-            <CardBody className="text-center">
-                <Typography variant="h4" color="blue-gray" className="mb-2">
-                Aibhinav Upadhay
-                </Typography>
-                <Typography color="blue" className="font-medium" textGradient>
-                Netaji Subhas University of Technology
-                </Typography>
-            </CardBody>
-            <CardFooter className="flex justify-center gap-7 pt-2">
-                <Tooltip content="Like">
-                <Typography
-                    as="a"
-                    href="#facebook"
-                    variant="lead"
-                    color="blue"
-                    textGradient
-                >
-                    <Icon icon="mdi:linkedin" color="#ee4774" width="40" height="40" />
-                </Typography>
-                </Tooltip>
-                <Tooltip content="Follow">
-                <Typography
-                    as="a"
-                    href="#twitter"
-                    variant="lead"
-                    color="light-blue"
-                    textGradient
-                >
-                    <Icon icon="mdi:github" color="#ee4774" width="40" height="40" />
-                </Typography>
-                </Tooltip>
-                <Tooltip content="Follow">
-                <Typography
-                    as="a"
-                    href="#instagram"
-                    variant="lead"
-                    color="purple"
-                    textGradient
-                >
-                   <Icon icon="mdi:instagram" color="#ee4774" width="40" height="40" />
-                </Typography>
-                </Tooltip>
-            </CardFooter>
-            </Card>
+          <div className="flex flex-wrap gap-5 place-content-center">
+          {cardInfo.map((info) => (
+                <Card className="w-1/4 h-96 m-4 ">
+                <CardHeader floated={false} className="h-80">
+                    <img src={info.img} alt="profile" />
+                </CardHeader>
+                <CardBody className="text-center">
+                    <Typography variant="h4" color="blue-gray" className="mb-1">
+                    {info.name}
+                    </Typography>
+                    <Typography color="blue" className="font-medium" textGradient>
+                    Netaji Subhas University of Technology
+                    </Typography>
+                </CardBody>
+                <CardFooter className="flex justify-center gap-7 pt-1">
+                    <Tooltip content="Like">
+                        <Icon icon="mdi:linkedin" href={info.linkedin} color="#ee4774" width="30" height="30" />
+                    </Tooltip>
+                    <Tooltip content="Follow">
+                        <Icon icon="mdi:github" href={info.github} color="#ee4774" width="30" height="30" />
+                    </Tooltip>
+                    <Tooltip content="Follow">
+                    <Icon icon="mdi:instagram" href={info.insta} color="#ee4774" width="30" height="30" />
+                    </Tooltip>
+                </CardFooter>
+                </Card>
+
+            ))}
                 {/* <div
                     style={{
                     display: 'flex',
@@ -88,6 +111,7 @@ const About = () => {
                     </div>
                     </Carousel>
                 </div> */}
+          </div>   
         </LoggedInContainer>
     );
 };
