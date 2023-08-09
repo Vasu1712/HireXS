@@ -57,7 +57,7 @@ const About = () => {
         <LoggedInContainer curActiveScreen="home">
           <div className="flex flex-wrap gap-5 place-content-center">
           {cardInfo.map((info) => (
-                <Card className="w-1/4 h-96 m-4 ">
+                <Card className="w-1/4 h-96 m-2 ">
                 <CardHeader floated={false} className="h-80">
                     <img src={info.img} alt="profile" />
                 </CardHeader>
@@ -65,7 +65,7 @@ const About = () => {
                     <Typography variant="h4" color="blue-gray" className="mb-1">
                     {info.name}
                     </Typography>
-                    <Typography color="blue" className="font-medium" textGradient>
+                    <Typography color="blue" className="font-medium text-sm mt-2" textGradient>
                     Netaji Subhas University of Technology
                     </Typography>
                 </CardBody>
