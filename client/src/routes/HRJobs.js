@@ -27,7 +27,7 @@ const HRjobs = () => {
                     }}
                 />
             )}
-            <LoggedInContainer curActiveScreen="home">
+            <LoggedInContainer curActiveScreen="jobs">
                 <div>
                     <div className="mx-8 text-4xl font-semibold text-color6">
                         Current Job Openings

@@ -28,7 +28,7 @@ const Home = () => {
     }, []);
 
     return (
-        <LoggedInContainer curActiveScreen='home'>
+        <LoggedInContainer curActiveScreen='jobs'>
             <div>
                 <div className='w-11/12 h-48 bg-color5 ml-10 mr-16 p-4 rounded-xl flex flex-col'>
                     <strong className='text-color6 font-semibold text-2xl ml-4'>

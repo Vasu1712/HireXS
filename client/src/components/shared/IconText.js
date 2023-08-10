@@ -12,7 +12,7 @@ const IconText = ({ iconName, displayText, active, targetLink, onClick, color })
                     <Icon
                         icon={iconName}
                         color={active ? "white" : color}
-                        fontSize={27}
+                        fontSize={30}
                     />
                 </div>
                 <div

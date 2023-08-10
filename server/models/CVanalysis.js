@@ -29,6 +29,10 @@ const CVSchema = new mongoose.Schema({
 	score: {
 		type: Number,
 		required: true,
+	},
+	testScore: {
+		type: Number,
+		required: true,
 	}
 });
 
