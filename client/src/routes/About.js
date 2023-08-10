@@ -5,7 +5,7 @@ import { Card, Typography, CardHeader, CardBody, CardFooter, Tooltip } from "@ma
 const cardInfo = [
     {
         id: '1',
-        name: 'Abhishek Rao Komarraju',
+        name: 'Abhishek Komarraju',
         img: '/profile/Abhishek.png',
         linkedin: 'https://www.linkedin.com/in/AbhishekkRao/',
         github: 'https://github.com/AbhishekkRao',
@@ -51,7 +51,7 @@ const About = () => {
             <div className="flex flex-wrap gap-5 place-content-center">
                 {cardInfo.map((info) => (
                     <Card className="w-1/4 h-96 m-2" key={info.name}>
-                        <CardHeader floated={false} className="h-80">
+                        <CardHeader floated={false}>
                             <img src={info.img} alt="profile" />
                         </CardHeader>
                         <CardBody className="text-center">
@@ -64,20 +64,26 @@ const About = () => {
                         </CardBody>
                         <CardFooter className="flex justify-center gap-7 pt-1">
                             <Tooltip content="LinkedIn">
-                                <Icon icon="mdi:linkedin" href={info.linkedin} color="#ee4774" width="30" height="30" />
+                                <a href={info.linkedin}>
+                                    <Icon icon="mdi:linkedin" color="#ee4774" width="30" height="30" />
+                                </a>
                             </Tooltip>
                             <Tooltip content="Github">
-                                <Icon icon="mdi:github" href={info.github} color="#ee4774" width="30" height="30" />
+                                <a href={info.github}>
+                                    <Icon icon="mdi:github" color="#ee4774" width="30" height="30" />
+                                </a>
                             </Tooltip>
                             <Tooltip content="E-mail">
-                                <Icon icon="dashicons:email" href={info.github} color="#ee4774" width="30" height="30" />
+                                <a href={info.email}>
+                                    <Icon icon="dashicons:email" color="#ee4774" width="30" height="30" />
+                                </a>
                             </Tooltip>
                         </CardFooter>
                     </Card>
 
                 ))}
             </div>
-        </LoggedInContainer>
+        </LoggedInContainer >
     );
 };
 
