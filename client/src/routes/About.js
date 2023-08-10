@@ -12,43 +12,43 @@ const style = {
   const cardInfo = [
     {
         id: '1',
-        name: 'Abhishek R Konnaraju',
+        name: 'Abhishek Rao Komarraju',
         img:'/profile/Abhishek.jpg',
-        linkedin: '',
-        github: '',
-        email: '',
+        linkedin: 'https://www.linkedin.com/in/AbhishekkRao/',
+        github: 'https://github.com/AbhishekkRao',
+        email: 'mailto:abhishek.komarraju@gmail.com',
     },
     {
         id: '2',
         name: 'Aibhinav Upadhay',
         img:'/profile/Aibhinav.png',
-        linkedin: '',
+        linkedin: 'https://www.linkedin.com/in/aibhinav-upadhyay-69b872175/',
         github: '',
         email: '',
     },
     {
         id: '3',
-        name: 'Mahika Khushwaha',
+        name: 'Mahika Kushwaha',
         img:'/profile/Mahika.jpg',
-        linkedin: '',
-        github: '',
+        linkedin: 'https://www.linkedin.com/in/mahikakushwaha/',
+        github: 'https://github.com/xx-Mahika-xx',
         email: '',
     },
     {
         id: '4',
         name: 'Shivang Patel',
         img:'/profile/Shivang.png',
-        linkedin: '',
-        github: '',
-        email: '',
+        linkedin: 'https://www.linkedin.com/in/shivang-patel-5425ba22b/',
+        github: 'https://github.com/Shivang-Patel',
+        email: 'mailto:shivang.patel2303@gmail.com',
     },
     {
         id: '5',
         name: 'Vasu Pal',
         img:'/profile/Vasu.png',
-        linkedin: '',
-        github: '',
-        email: '',
+        linkedin: 'https://www.linkedin.com/in/vasu-pal-300448203/',
+        github: 'https://github.com/Vasu1712/',
+        email: 'mailto:vasu.pal.ug20@nsut.ac.in',
     },
   ]
 
@@ -77,7 +77,7 @@ const About = () => {
                         <Icon icon="mdi:github" href={info.github} color="#ee4774" width="30" height="30" />
                     </Tooltip>
                     <Tooltip content="Follow">
-                    <Icon icon="mdi:instagram" href={info.insta} color="#ee4774" width="30" height="30" />
+                    <Icon icon="dashicons:email" href={info.github} color="#ee4774" width="30" height="30" />
                     </Tooltip>
                 </CardFooter>
                 </Card>
