@@ -3,9 +3,11 @@ import { useParams } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import TextInput from '../components/TextInput';
 import { useState, useRef, useEffect } from 'react';
+import { format } from 'date-fns';
 import { makeApiGetRequest, makeAuthenticatedPOSTRequest } from '../utils/serverHelper';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
 
 const Jobid = () => {
 	const [collegeName, setCollegeName] = useState('');
@@ -140,7 +142,7 @@ const Jobid = () => {
 							icon='ic:baseline-email'
 							className='pt-1 text-xl'
 						/>
-						<div className='pl-2'>Last Date: {jobData?.applicationDate}</div>
+						<div className='pl-2'>Last Date: {jobData?.applicationDate} </div>
 					</div>
 					<div className='text-white mt-4 flex'>
 						<Icon
@@ -200,8 +202,7 @@ const Jobid = () => {
 					type='text'
 				/>
 				<p className='text-xs mt-2 italic text-color6'>
-					(* Please ensure submitting the URL after enabling sharing access to
-					all)
+					(* Please ensure submitting the URL after enabling sharing access to all)
 				</p>
 				<button
 					className='h-12 mt-12 my-6 bg-white rounded-2xl text-color1 px-20 font-medium text-lg flex items-center justify-center'
