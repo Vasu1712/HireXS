@@ -1,7 +1,6 @@
 import LoggedInContainer from "../containers/LoggedInContainer";
 import { Icon } from "@iconify/react";
-import { Link } from "react-router-dom";
-import { Card, Typography, CardHeader, CardBody, CardFooter, Tooltip, Carousel, IconButton } from "@material-tailwind/react";
+import { Card, Typography, CardHeader, CardBody, CardFooter, Tooltip } from "@material-tailwind/react";
 // import { Carousel } from 'react-carousel3d';
 
 const style = {
@@ -13,7 +12,7 @@ const style = {
     {
         id: '1',
         name: 'Abhishek Rao Komarraju',
-        img:'/profile/Abhishek.jpg',
+        img:'/profile/Abhishek.png',
         linkedin: 'https://www.linkedin.com/in/AbhishekkRao/',
         github: 'https://github.com/AbhishekkRao',
         email: 'mailto:abhishek.komarraju@gmail.com',
@@ -29,7 +28,7 @@ const style = {
     {
         id: '3',
         name: 'Mahika Kushwaha',
-        img:'/profile/Mahika.jpg',
+        img:'/profile/Mahika.png',
         linkedin: 'https://www.linkedin.com/in/mahikakushwaha/',
         github: 'https://github.com/xx-Mahika-xx',
         email: '',
@@ -70,47 +69,19 @@ const About = () => {
                     </Typography>
                 </CardBody>
                 <CardFooter className="flex justify-center gap-7 pt-1">
-                    <Tooltip content="Like">
+                    <Tooltip content="LinkedIn">
                         <Icon icon="mdi:linkedin" href={info.linkedin} color="#ee4774" width="30" height="30" />
                     </Tooltip>
-                    <Tooltip content="Follow">
+                    <Tooltip content="Github">
                         <Icon icon="mdi:github" href={info.github} color="#ee4774" width="30" height="30" />
                     </Tooltip>
-                    <Tooltip content="Follow">
+                    <Tooltip content="E-mail">
                     <Icon icon="dashicons:email" href={info.github} color="#ee4774" width="30" height="30" />
                     </Tooltip>
                 </CardFooter>
                 </Card>
 
             ))}
-                {/* <div
-                    style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    background: 'linear-gradient(to bottom, #16235e 0%, #020223 100%)',
-                    }}
-                >
-                    <Carousel height={460} width={980} yOrigin={42} yRadius={48} autoPlay={true}>
-                    <div key={1} style={style}>
-                        <img alt="" src="/image/1.png" />
-                    </div>
-                    <div key={2} style={style}>
-                        <img alt="" src="/image/2.png" />
-                    </div>
-                    <div key={3} style={style}>
-                        <img alt="" src="/image/3.png" />
-                    </div>
-                    <div key={4} style={style}>
-                        <img alt="" src="/image/4.png" />
-                    </div>
-                    <div key={5} style={style}>
-                        <img alt="" src="/image/5.png" />
-                    </div>
-                    <div key={6} style={style}>
-                        <img alt="" src="/image/6.png" />
-                    </div>
-                    </Carousel>
-                </div> */}
           </div>   
         </LoggedInContainer>
     );

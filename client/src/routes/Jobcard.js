@@ -3,7 +3,7 @@ import {
 	CardBody,
 	CardFooter,
 	Typography,
-	Button, Badge
+	Button
 } from '@material-tailwind/react';
 import { Icon } from '@iconify/react';
 import { Link } from 'react-router-dom';
