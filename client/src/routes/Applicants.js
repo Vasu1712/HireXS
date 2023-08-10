@@ -90,7 +90,7 @@ const Applicants = () => {
 
 
 	return (
-		<LoggedInContainer curActiveScreen='home'>
+		<LoggedInContainer curActiveScreen='jobs'>
 			<div>
 				<div className='mx-8 text-4xl font-semibold text-color6'>
 					Applicants
@@ -146,6 +146,7 @@ const Applicants = () => {
 											<td>
 												<button className='bg-gray-300 rounded-xl px-3 mt-4 text-black'
 													onClick={(e) => {
+														e.preventDefault();
 														testLink(applicant.owner.email)
 													}}
 												>
@@ -155,6 +156,7 @@ const Applicants = () => {
 											<td>
 												<button className='border border-gray-400 rounded-xl px-3 mt-4 text-green-800'
 													onClick={(e) => {
+														e.preventDefault();
 														interviewLink(applicant.owner.email)
 													}}
 												>
@@ -174,7 +176,7 @@ const Applicants = () => {
 				</div>
 
 			</div>
-		</LoggedInContainer >
+		</LoggedInContainer>
 	);
 };
 

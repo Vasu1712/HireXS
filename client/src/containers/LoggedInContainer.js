@@ -1,17 +1,11 @@
-import { useContext, useState, useLayoutEffect, useRef } from "react";
-import { Howl, Howler } from "howler";
-import { Icon } from "@iconify/react";
 import hirexs_logo from "../assets/images/hirexs_logo.png";
 import IconText from "../components/shared/IconText";
-import TextWithHover from "../components/shared/TextWithHover";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useCookies } from "react-cookie";
 
 const LoggedInContainer = ({ children, curActiveScreen }) => {
 
-    const [cookie, setCookie] = useCookies(["token"]);
-    const [cookies, setCookies] = useCookies(["username"]);
-    const navigate = useNavigate();
+    const [cookie] = useCookies(["token"]);
     const logout = () => {
         document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
         document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";

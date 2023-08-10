@@ -1,13 +1,6 @@
 const logout = () => {
-    // const date = new Date();
-    // date.setDate(date.getDate() - 10);
-    // setCookie("token", { path: "/", expires: date });
-    // Cookies.remove();
     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
     document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-    // removeCookie("token");
-    // localStorage.removeItem('token')
-    // window.localStorage.clear();
     window.location.reload(true);
 };
 

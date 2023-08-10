@@ -5,14 +5,14 @@ import { Link } from "react-router-dom";
 import { useCookies } from 'react-cookie';
 
 const HomeComponent = () => {
-    const [cookie, setCookie] = useCookies(["token"]);
+    const [cookie] = useCookies(["token"]);
 
     return (
         <div className="w-full h-full bg-app-black overflow-auto">
             <div className="flex p-8 justify-between font-semibold">
                 <div className='ml-10'>
                     <Link to="/home">
-                        <img src={logo} style={{ width: "209px", height: "51px" }} />
+                        <img src={logo} style={{ width: "209px", height: "51px" }} alt="HireXS Logo" />
                     </Link>
                 </div>
                 <div className='text-white text-xl mt-3'>
@@ -48,7 +48,7 @@ const HomeComponent = () => {
                     </Link>
                 </div>
                 <div className='flex justify-center mt-10'>
-                    <img src={bg} className='opacity-75 mix-blend-screen w-3/4' />
+                    <img src={bg} className='opacity-75 mix-blend-screen w-3/4' alt="bg" />
                 </div>
             </div>
         </div>

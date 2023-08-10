@@ -13,7 +13,7 @@ import About from './routes/About';
 import { useCookies } from 'react-cookie';
 
 function App() {
-	const [cookie, setCookie] = useCookies(['token']);
+	const [cookie] = useCookies(['token']);
 
 	return (
 		<div className='w-screen h-screen font-poppins '>

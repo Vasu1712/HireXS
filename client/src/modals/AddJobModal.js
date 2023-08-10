@@ -1,6 +1,6 @@
 import TextInput from "../components/TextInput";
 import { useState } from "react";
-import { makeAuthenticatedGETRequest, makeAuthenticatedPOSTRequest } from "../utils/serverHelper";
+import { makeAuthenticatedPOSTRequest } from "../utils/serverHelper";
 
 const AddJobModal = ({ closeModal }) => {
     const [jobId, setjobId] = useState("");
