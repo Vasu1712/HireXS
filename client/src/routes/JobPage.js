@@ -3,8 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Icon } from '@iconify/react';
 import TextInput from '../components/TextInput';
 import { useState, useRef, useEffect } from 'react';
-import { format } from 'date-fns';
-import { makeApiGetRequest, makeAuthenticatedPOSTRequest } from '../utils/serverHelper';
+import { makeAuthenticatedPOSTRequest } from '../utils/serverHelper';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -15,7 +14,6 @@ const Jobid = () => {
 	const [gradePoint, setGradePoint] = useState('');
 	const [resumeLink, setResumeLink] = useState('');
 	const [jobData, setJobData] = useState(null);
-	const [cvAnalysis, setcvAnalysis] = useState('');
 
 	const ref = useRef(null);
 
@@ -23,7 +21,6 @@ const Jobid = () => {
 
 	const job_id = useParams().jobid;
 	const [isAlertVisible, setIsAlertVisible] = useState(false);
-	const [copied, setCopied] = useState(false);
 	function copyToClip() {
 		setIsAlertVisible(true);
 		const el = document.createElement('input');
@@ -32,7 +29,6 @@ const Jobid = () => {
 		el.select();
 		document.execCommand('copy');
 		document.body.removeChild(el);
-		setCopied(true);
 		setTimeout(() => {
 			setIsAlertVisible(false);
 		}, 2000);
@@ -59,7 +55,7 @@ const Jobid = () => {
 			.catch((error) => {
 				console.error('Error fetching job data:', error);
 			});
-	}, []);
+	}, [job_id]);
 
 	const applyPosition = async () => {
 		if (!collegeName || !gradePoint || !resumeLink) {
@@ -91,6 +87,12 @@ const Jobid = () => {
 	const handleClick = () => {
 		ref.current?.scrollIntoView({ behavior: 'smooth' });
 	};
+
+	const formattedDate = new Date(jobData?.applicationDate).toLocaleDateString('en-US', {
+		day: 'numeric',
+		month: 'short',
+		year: 'numeric'
+	})
 
 	return (
 		<LoggedInContainer curActiveScreen='home'>
@@ -142,7 +144,7 @@ const Jobid = () => {
 							icon='ic:baseline-email'
 							className='pt-1 text-xl'
 						/>
-						<div className='pl-2'>Last Date: {jobData?.applicationDate} </div>
+						<div className='pl-2'>Last Date: {formattedDate} </div>
 					</div>
 					<div className='text-white mt-4 flex'>
 						<Icon

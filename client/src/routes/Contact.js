@@ -2,7 +2,7 @@ import LoggedInContainer from "../containers/LoggedInContainer";
 
 const contact = () => {
     return (
-        <LoggedInContainer>
+        <LoggedInContainer curActiveScreen="help">
             <div className="w-5/6 bg-gradient-to-r from-color1 to-color2 ml-8 rounded-xl p-8">
                 <h3 className="fcf-h3 font-medium text-color6 text-4xl ">Contact Us</h3>
                 <div className="flex">

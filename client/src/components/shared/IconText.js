@@ -17,7 +17,7 @@ const IconText = ({ iconName, displayText, active, targetLink, onClick, color })
                 </div>
                 <div
                     className={`${active ? "text-white" : "text-gray-400"
-                        } ${color == "red" ? "text-red-600" : ""} text-sm font-semibold hover:text-white`}
+                        } ${color === "red" ? "text-red-600" : ""} text-sm font-semibold hover:text-white`}
                 >
                     {displayText}
                 </div>
