@@ -1,7 +1,7 @@
 import { useContext, useState, useLayoutEffect, useRef } from "react";
 import { Howl, Howler } from "howler";
 import { Icon } from "@iconify/react";
-import spotify_logo from "../assets/images/hirexs_logo.png";
+import hirexs_logo from "../assets/images/hirexs_logo.png";
 import IconText from "../components/shared/IconText";
 import TextWithHover from "../components/shared/TextWithHover";
 import { Link, useNavigate } from "react-router-dom";
@@ -14,11 +14,11 @@ const LoggedInContainer = ({ children, curActiveScreen }) => {
     const navigate = useNavigate();
     const logout = () => {
         document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-        document.cookies = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+        document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
         window.location.reload(true);
     };
 
-    const LogoutComp = ({ active }) => {
+    const LogoutComp = () => {
         return (
             <div className="flex items-center justify-start cursor-pointer"
                 onClick={(e) => {
@@ -43,32 +43,32 @@ const LoggedInContainer = ({ children, curActiveScreen }) => {
                         <div className="logoDiv p-5">
                             <Link to="/home">
                                 <img
-                                    src={spotify_logo}
-                                    alt="spotify logo"
+                                    src={hirexs_logo}
+                                    alt="HireXS Logo"
                                     width={175}
                                 />
                             </Link>
                         </div>
                         <div className="py-5">
                             <IconText
-                                iconName={"uil:suitcase"}
-                                displayText={"Jobs"}
-                                targetLink={"/jobs"}
+                                iconName={"ic:round-home"}
+                                displayText={"Home"}
+                                targetLink={"/home"}
                                 active={curActiveScreen === "home"}
                                 color={"gray"}
                             />
                             <IconText
-                                iconName={"heroicons-outline:pencil-alt"}
-                                displayText={"Apply"}
-                                active={curActiveScreen === "apply"}
-                                // targetLink={"/apply"}
+                                iconName={"uil:suitcase"}
+                                displayText={"Jobs"}
+                                targetLink={"/jobs"}
+                                active={curActiveScreen === "jobs"}
                                 color={"gray"}
                             />
                             <IconText
-                                iconName={"mdi:paperclip"}
-                                displayText={"Documents"}
-                                active={curActiveScreen === "documents"}
-                                // targetLink={"/documents"}
+                                iconName={"mdi:about"}
+                                displayText={"About"}
+                                active={curActiveScreen === "about"}
+                                targetLink={"/about"}
                                 color={"gray"}
                             />
                         </div>
@@ -96,7 +96,7 @@ const LoggedInContainer = ({ children, curActiveScreen }) => {
                         <div className="flex h-full">
                             <div className="w-1/4 flex justify-around h-full items-center">
                                 <div className="bg-white ml-10 px-4 py-2 flex items-center justify-center rounded-full font-semibold cursor-pointer">
-                                    {cookie.username[0].toUpperCase()}
+                                    {cookie?.username[0].toUpperCase()}
                                 </div>
                             </div>
                         </div>

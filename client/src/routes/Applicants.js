@@ -27,6 +27,25 @@ const Applicants = () => {
 		fetchData();
 	}, [jobId]);
 
+	useEffect(() => {
+		const url = `/auth/gettestscore/${jobId}`;
+
+		async function fetchData() {
+			try {
+				const response = await makeAuthenticatedGETRequest(url);
+				const jobDetails = response;
+				const filteredApplicants = jobDetails.filter(
+					(applicant) => applicant.jobId === jobId
+				);
+				setApplicants(filteredApplicants);
+			} catch (error) {
+				console.error('Error:', error);
+			}
+		}
+
+		fetchData();
+	}, [jobId]);
+
 
 	const testLink = async (email) => {
 		try {
@@ -118,7 +137,7 @@ const Applicants = () => {
 													</button>
 												</span>
 											</td>
-											<td></td>
+											<td className="px-4 py-4 whitespace-nowrap">{applicant.testScore ? applicant.testScore : "Not Attempted"}</td>
 											{/* <td className="px-4 py-4 whitespace-nowrap">
 												<a href={applicant.resume} target="_blank" rel="noopener noreferrer">
 													<Icon icon="mdi:open-in-new" className="text-indigo-600 cursor-pointer" />

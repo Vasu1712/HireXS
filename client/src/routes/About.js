@@ -7,60 +7,60 @@ import { Card, Typography, CardHeader, CardBody, CardFooter, Tooltip } from "@ma
 const style = {
     width: 297,
     height: 296,
-  };
+};
 
 const About = () => {
     return (
-        <LoggedInContainer curActiveScreen="home">
-          <Card className="w-96 m-32">
-            <CardHeader floated={false} className="h-80">
-                <img src="/profile/img1.jpg" alt="profile" />
-            </CardHeader>
-            <CardBody className="text-center">
-                <Typography variant="h4" color="blue-gray" className="mb-2">
-                Aibhinav Upadhay
-                </Typography>
-                <Typography color="blue" className="font-medium" textGradient>
-                Netaji Subhas University of Technology
-                </Typography>
-            </CardBody>
-            <CardFooter className="flex justify-center gap-7 pt-2">
-                <Tooltip content="Like">
-                <Typography
-                    as="a"
-                    href="#facebook"
-                    variant="lead"
-                    color="blue"
-                    textGradient
-                >
-                    <Icon icon="mdi:linkedin" color="#ee4774" width="40" height="40" />
-                </Typography>
-                </Tooltip>
-                <Tooltip content="Follow">
-                <Typography
-                    as="a"
-                    href="#twitter"
-                    variant="lead"
-                    color="light-blue"
-                    textGradient
-                >
-                    <Icon icon="mdi:github" color="#ee4774" width="40" height="40" />
-                </Typography>
-                </Tooltip>
-                <Tooltip content="Follow">
-                <Typography
-                    as="a"
-                    href="#instagram"
-                    variant="lead"
-                    color="purple"
-                    textGradient
-                >
-                   <Icon icon="mdi:instagram" color="#ee4774" width="40" height="40" />
-                </Typography>
-                </Tooltip>
-            </CardFooter>
+        <LoggedInContainer curActiveScreen="about">
+            <Card className="w-96 m-32">
+                <CardHeader floated={false} className="h-80">
+                    <img src="/profile/img1.jpg" alt="profile" />
+                </CardHeader>
+                <CardBody className="text-center">
+                    <Typography variant="h4" color="blue-gray" className="mb-2">
+                        Aibhinav Upadhay
+                    </Typography>
+                    <Typography color="blue" className="font-medium" textGradient>
+                        Netaji Subhas University of Technology
+                    </Typography>
+                </CardBody>
+                <CardFooter className="flex justify-center gap-7 pt-2">
+                    <Tooltip content="Like">
+                        <Typography
+                            as="a"
+                            href="#facebook"
+                            variant="lead"
+                            color="blue"
+                            textGradient
+                        >
+                            <Icon icon="mdi:linkedin" color="#ee4774" width="40" height="40" />
+                        </Typography>
+                    </Tooltip>
+                    <Tooltip content="Follow">
+                        <Typography
+                            as="a"
+                            href="#twitter"
+                            variant="lead"
+                            color="light-blue"
+                            textGradient
+                        >
+                            <Icon icon="mdi:github" color="#ee4774" width="40" height="40" />
+                        </Typography>
+                    </Tooltip>
+                    <Tooltip content="Follow">
+                        <Typography
+                            as="a"
+                            href="#instagram"
+                            variant="lead"
+                            color="purple"
+                            textGradient
+                        >
+                            <Icon icon="mdi:instagram" color="#ee4774" width="40" height="40" />
+                        </Typography>
+                    </Tooltip>
+                </CardFooter>
             </Card>
-                {/* <div
+            {/* <div
                     style={{
                     display: 'flex',
                     justifyContent: 'center',
