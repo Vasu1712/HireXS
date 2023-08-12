@@ -38,7 +38,7 @@ HireXS is a full-stack web portal developed by a team of students from Netaji Su
 ## Installation
 
 1. Clone the repository:
-```git clone https://github.com/AbhishekkRao/HireXS.git```
+```git clone https://github.com/Vasu1712/HireXS.git```
 
 
 2. Install required dependencies:
