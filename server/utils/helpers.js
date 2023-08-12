@@ -28,8 +28,8 @@ exports.newDescription = async (url) => {
 	return formattedResponse;
 }
 
-exports.testLink = async (email) => {
-	const response = await fetch(llmApiUrl + '/TestMail?email=' + email, {
+exports.testLink = async ({ email, job_id }) => {
+	const response = await fetch(llmApiUrl + '/TestMail?email=' + email + '&job_id=' + job_id, {
 		method: 'POST'
 	});
 	const formattedResponse = await response.json();
