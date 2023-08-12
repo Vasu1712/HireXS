@@ -27,30 +27,8 @@ const Applicants = () => {
 		fetchData();
 	}, [jobId]);
 
-	useEffect(() => {
-		const url = `/auth/gettestscore/${jobId}`;
-
-		async function fetchData() {
-			try {
-				const response = await makeAuthenticatedGETRequest(url);
-				const jobDetails = response;
-				const filteredApplicants = jobDetails.filter(
-					(applicant) => applicant.jobId === jobId
-				);
-				setApplicants(filteredApplicants);
-			} catch (error) {
-				console.error('Error:', error);
-			}
-		}
-
-		fetchData();
-	}, [jobId]);
-
-
-	const testLink = async (email) => {
+	const testLink = async (data) => {
 		try {
-			const data = { email: email };
-
 			const response = await makeAuthenticatedPOSTRequest(
 				'/auth/testlink',
 				data
@@ -114,7 +92,6 @@ const Applicants = () => {
 										<th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">CGPA</th>
 										<th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Resume Score</th>
 										<th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Assessment Score</th>
-										{/* <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Resume</th> */}
 										<th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
 									</tr>
 								</thead>
@@ -147,7 +124,10 @@ const Applicants = () => {
 												<button className='bg-gray-300 rounded-xl px-3 mt-4 text-black'
 													onClick={(e) => {
 														e.preventDefault();
-														testLink(applicant.owner.email)
+														testLink({
+															email: applicant.owner.email,
+															job_id: jobId
+														})
 													}}
 												>
 													Test Link

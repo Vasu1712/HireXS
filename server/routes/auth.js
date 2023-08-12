@@ -107,8 +107,9 @@ router.post(
 	passport.authenticate('jwt', { session: false }),
 	async (req, res) => {
 		const email = req.body.email;
+		const job_id = req.body.job_id;
 		try {
-			const stat = testLink(email);
+			const stat = testLink({ email, job_id });
 			if (stat.status === 200) {
 				return res.status(200).json({ message: "Email sent" });
 			}
