@@ -35,7 +35,7 @@ const contact = () => {
 
                     </form>
                     <div className="">
-                        <img alt="contact us" src="contact.gif" className="w-10/12 mx-20 p-8" />
+                        <img alt="contact us" src="support.png" className="w-12/12 mx-10 p-8" />
                     </div>
                 </div>
             </div>
