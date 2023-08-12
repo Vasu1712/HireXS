@@ -14,18 +14,37 @@ const SignupComponent = () => {
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [cookie, setCookie] = useCookies(['token']);
+	const [isValidEmail, setIsValidEmail] = useState(true);
 	const navigate = useNavigate();
 
+	const validateEmail = (email) => {
+		const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+		return emailPattern.test(email);
+	};
+
 	const signUp = async () => {
+		if (!validateEmail(email)) {
+			alert('Please enter a valid email address.');
+			return;
+		}
+
 		if (email !== confirmEmail) {
 			alert('Email and confirm email fields must match. Please check again');
 			return;
 		}
 		if (!email || !firstName || !lastName || !password || !username) {
-			alert('all the fields are required. Please check again');
+			alert('All the fields are required. Please check again');
 			return;
 		}
-		const data = { email, password, username, firstName, lastName, access: "user" };
+
+		const data = {
+			email,
+			password,
+			username,
+			firstName,
+			lastName,
+			access: 'user',
+		};
 		const response = await makeUnauthenticatedPOSTRequest(
 			'/auth/register',
 			data
@@ -48,7 +67,10 @@ const SignupComponent = () => {
 		<div className='w-full h-full flex flex-col items-center bg-app-black text-white overflow-auto'>
 			<div className='logo p-5 border-b border-solid border-gray-300 w-full flex justify-center'>
 				<Link to='/home'>
-					<img src={logo} alt="Logo" />
+					<img
+						src={logo}
+						alt='Logo'
+					/>
 				</Link>
 			</div>
 			<div className='inputRegion w-1/3 py-10 flex items-center justify-center flex-col'>
