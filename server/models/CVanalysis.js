@@ -32,7 +32,7 @@ const CVSchema = new mongoose.Schema({
 	},
 	testScore: {
 		type: Number,
-		required: true,
+		required: false,
 	}
 });
 

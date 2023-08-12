@@ -114,7 +114,7 @@ const Applicants = () => {
 													</button>
 												</span>
 											</td>
-											<td className="px-4 py-4 whitespace-nowrap">{applicant.testScore ? applicant.testScore : "Not Attempted"}</td>
+											<td className="px-4 py-4 whitespace-nowrap">{applicant.testScore ? applicant.testScore * 2 : "Not Attempted"}</td>
 											{/* <td className="px-4 py-4 whitespace-nowrap">
 												<a href={applicant.resume} target="_blank" rel="noopener noreferrer">
 													<Icon icon="mdi:open-in-new" className="text-indigo-600 cursor-pointer" />
