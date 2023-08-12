@@ -1,9 +1,0 @@
-flask
-Gunicorn
-scikit-learn
-numpy
-PyPDF2
-nltk
-openai
-googledrivedownloader
-pymongo
