@@ -14,7 +14,8 @@ const SignupComponent = () => {
 	const [firstName, setFirstName] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [cookie, setCookie] = useCookies(['token']);
-	const [isValidEmail, setIsValidEmail] = useState(true);
+	const [alertMessage, setAlertMessage] = useState('');
+	const [alertType, setAlertType] = useState('');
 	const navigate = useNavigate();
 
 	const validateEmail = (email) => {
@@ -24,16 +25,21 @@ const SignupComponent = () => {
 
 	const signUp = async () => {
 		if (!validateEmail(email)) {
-			alert('Please enter a valid email address.');
+			setAlertType('error');
+			setAlertMessage('Please enter a valid email address.');
 			return;
 		}
 
 		if (email !== confirmEmail) {
-			alert('Email and confirm email fields must match. Please check again');
+			setAlertType('error');
+			setAlertMessage(
+				'Email and confirm email fields must match. Please check again.'
+			);
 			return;
 		}
 		if (!email || !firstName || !lastName || !password || !username) {
-			alert('All the fields are required. Please check again');
+			setAlertType('error');
+			setAlertMessage('All the fields are required. Please check again.');
 			return;
 		}
 
@@ -56,10 +62,12 @@ const SignupComponent = () => {
 			setCookie('token', token, { path: '/', expires: date });
 			setCookie('username', response.username, { path: '/', expires: date });
 			setCookie('access', response.access, { path: '/', expires: date });
-			alert('Success');
+			setAlertType('success');
+			setAlertMessage('Success');
 			navigate('/home');
 		} else {
-			alert('Failure');
+			setAlertType('error');
+			setAlertMessage('Failure');
 		}
 	};
 
@@ -74,6 +82,33 @@ const SignupComponent = () => {
 				</Link>
 			</div>
 			<div className='inputRegion w-1/3 py-10 flex items-center justify-center flex-col'>
+				{alertMessage && (
+					<div
+						className={`${
+							alertType === 'success'
+								? 'bg-green-100 border-green-500'
+								: 'bg-red-100 border-red-500'
+						} border-t-4 rounded-b text-${
+							alertType === 'success' ? 'green' : 'red'
+						}-900 px-4 py-3 shadow-md mb-6`}
+						role='alert'>
+						<div className='flex'>
+							<div className='py-1'>
+								<svg
+									className={`fill-current h-6 w-6 text-${
+										alertType === 'success' ? 'green' : 'red'
+									}-500 mr-4`}
+									xmlns='http://www.w3.org/2000/svg'
+									viewBox='0 0 20 20'>
+									<path d='M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z' />
+								</svg>
+							</div>
+							<div>
+								<p className='font-bold'>{alertMessage}</p>
+							</div>
+						</div>
+					</div>
+				)}
 				<div className='font-bold mb-4 text-2xl'>
 					Sign up for free to start applying.
 				</div>
