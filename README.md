@@ -3,7 +3,9 @@
 ![HireXS Logo](https://github.com/AbhishekkRao/HireXS/assets/77543486/b4046151-e1c9-420b-bd28-3a21b45fc568)
 
 
-[![HireXS Video Introduction](https://img.youtube.com/vi/5eqH71qmqrM/0.jpg)](https://www.youtube.com/watch?v=5eqH71qmqrM)
+https://github.com/Vasu1712/HireXS/assets/78649491/9e74f1d3-a0cf-465f-9778-cac90da17ec9
+
+
 
 
 Welcome to the official repository of **HireXS**, an innovative platform that revolutionizes the way job seekers connect with employers. Our cutting-edge technology simplifies and enhances the hiring process, making it more efficient and user-focused.
@@ -28,7 +30,7 @@ HireXS is a full-stack web portal developed by a team of students from Netaji Su
 - **Database**: MongoDB ![MongoDB Icon](https://img.icons8.com/color/30/000000/mongodb.png)
 - **CV Analysis**: Python (Flask), NLTK, scikit-learn, GPT-2 ![Python Icon](https://img.icons8.com/color/30/000000/python.png)
 - **Assessment Chatbot**: OpenAI API ![AI Icon](https://img.icons8.com/color/30/000000/artificial-intelligence.png)
-- **UI Framework**: TailwindCSS ![TailwindCSS Icon](https://img.icons8.com/color/30/000000/tailwind-css.png)
+- **UI Framework**: TailwindCSS <img src="https://avatars.githubusercontent.com/u/67109815?s=280&v=4" width="50" height="50" alt="TailwindCSS Icon">
 
 ## Features
 
