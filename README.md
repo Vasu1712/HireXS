@@ -3,7 +3,9 @@
 ![HireXS Logo](https://github.com/AbhishekkRao/HireXS/assets/77543486/b4046151-e1c9-420b-bd28-3a21b45fc568)
 
 
-[![HireXS Video Introduction](https://img.youtube.com/vi/5eqH71qmqrM/0.jpg)](https://www.youtube.com/watch?v=5eqH71qmqrM)
+https://github.com/Vasu1712/HireXS/assets/78649491/9e74f1d3-a0cf-465f-9778-cac90da17ec9
+
+
 
 
 Welcome to the official repository of **HireXS**, an innovative platform that revolutionizes the way job seekers connect with employers. Our cutting-edge technology simplifies and enhances the hiring process, making it more efficient and user-focused.
