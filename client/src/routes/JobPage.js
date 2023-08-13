@@ -6,6 +6,7 @@ import { useState, useRef, useEffect } from 'react';
 import { makeAuthenticatedPOSTRequest } from '../utils/serverHelper';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { backendUrl } from '../utils/config';
 
 
 const Jobid = () => {
@@ -37,7 +38,7 @@ const Jobid = () => {
 	useEffect(() => {
 		// Fetch data from the API and update the collegeList state
 		axios
-			.get('http://localhost:8080/institutenames/institutes')
+			.get(backendUrl + '/institutenames/institutes')
 			.then((response) => {
 				setCollegeList(response.data);
 			})
@@ -48,7 +49,7 @@ const Jobid = () => {
 
 	useEffect(() => {
 		axios
-			.get('http://localhost:8080/jobslist/jobs/' + job_id)
+			.get(backendUrl + '/jobslist/jobs/' + job_id)
 			.then((response) => {
 				setJobData(response.data);
 			})
