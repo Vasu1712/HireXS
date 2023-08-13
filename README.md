@@ -2,7 +2,7 @@
 
 ![HireXS Logo](https://github.com/AbhishekkRao/HireXS/assets/77543486/b4046151-e1c9-420b-bd28-3a21b45fc568)
 
-<iframe src="https://www.veed.io/embed/63d3a4be-f056-4176-9f8d-56c021fa6f08" width="744" height="504" frameborder="0" title="HireXS" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/5eqH71qmqrM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 Welcome to the official repository of **HireXS**, an innovative platform that revolutionizes the way job seekers connect with employers. Our cutting-edge technology simplifies and enhances the hiring process, making it more efficient and user-focused.
 
