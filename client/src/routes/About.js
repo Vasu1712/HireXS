@@ -13,11 +13,11 @@ const cardInfo = [
     },
     {
         id: '2',
-        name: 'Aibhinav Upadhay',
+        name: 'Aibhinav Upadhyay',
         img: '/profile/Aibhinav.png',
         linkedin: 'https://www.linkedin.com/in/aibhinav-upadhyay-69b872175/',
-        github: '',
-        email: '',
+        github: 'https://github.com/Abhixsmasher',
+        email: 'mailto:abhixsmasher@gmail.com',
     },
     {
         id: '3',
@@ -25,7 +25,7 @@ const cardInfo = [
         img: '/profile/Mahika.png',
         linkedin: 'https://www.linkedin.com/in/mahikakushwaha/',
         github: 'https://github.com/xx-Mahika-xx',
-        email: '',
+        email: 'mailto:mahika.ug20@nsut.ac.in',
     },
     {
         id: '4',

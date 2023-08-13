@@ -2,7 +2,9 @@
 
 ![HireXS Logo](https://github.com/AbhishekkRao/HireXS/assets/77543486/b4046151-e1c9-420b-bd28-3a21b45fc568)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/5eqH71qmqrM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+[![HireXS Video Introduction](https://img.youtube.com/vi/5eqH71qmqrM/0.jpg)](https://www.youtube.com/watch?v=5eqH71qmqrM)
+
 
 Welcome to the official repository of **HireXS**, an innovative platform that revolutionizes the way job seekers connect with employers. Our cutting-edge technology simplifies and enhances the hiring process, making it more efficient and user-focused.
 
@@ -78,3 +80,28 @@ HireXS is a full-stack web portal developed by a team of students from Netaji Su
 
 ![Job Applicants](https://github.com/AbhishekkRao/HireXS/assets/77543486/28c5fd45-d2a9-4437-b369-254aba9b4ea7)
 *Job applicants for a particular job*
+
+### Future Improvements
+
+Future improvements have been outlined to address the identified issues and limitations. These include:
+- Optimizing CV ranking and edge-cases management.
+- Improving upon accuracy and performance of LLM Model.
+- Responsive UI suited for more screen sizes.
+- Multilingual support for improving upon diverse hiring processes.
+<br><br>
+<i>Additionally, continuous testing, user feedback, and iterative development will be key to refining the project further.</i>
+
+
+### Creators
+
+<b>HireXS</b> project was created by:
+
+- [Abhishek Rao Komarraju](https://github.com/AbhishekkRao)
+- [Aibhinav Upadhyay](https://github.com/Abhixsmasher)
+- [Mahika Kushwaha](https://github.com/xx-Mahika-xx)
+- [Shivang Patel](https://github.com/Shivang-Patel)
+- [Vasu Pal](https://github.com/Vasu1712)
+
+### License
+
+This project is open-source and is licensed under the [MIT License](LICENSE).
