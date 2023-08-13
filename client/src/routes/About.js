@@ -83,7 +83,7 @@ const About = () => {
 
                 ))}
             </div>
-        </LoggedInContainer >
+        </LoggedInContainer>
     );
 };
 

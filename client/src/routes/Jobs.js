@@ -5,6 +5,7 @@ import { Card, Typography } from '@material-tailwind/react';
 import { format } from 'date-fns';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { backendUrl } from '../utils/config';
 
 const TABLE_HEAD = [
 	'Company',
@@ -22,7 +23,7 @@ const Home = () => {
 
 	useEffect(() => {
 		axios
-			.get('http://localhost:8080/jobslist/jobs')
+			.get(backendUrl + '/jobslist/jobs')
 			.then((response) => {
 				setJobsData(response.data);
 				setFilteredJobs(response.data);
