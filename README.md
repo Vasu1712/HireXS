@@ -30,7 +30,7 @@ HireXS is a full-stack web portal developed by a team of students from Netaji Su
 - **Database**: MongoDB ![MongoDB Icon](https://img.icons8.com/color/30/000000/mongodb.png)
 - **CV Analysis**: Python (Flask), NLTK, scikit-learn, GPT-2 ![Python Icon](https://img.icons8.com/color/30/000000/python.png)
 - **Assessment Chatbot**: OpenAI API ![AI Icon](https://img.icons8.com/color/30/000000/artificial-intelligence.png)
-- **UI Framework**: TailwindCSS ![TailwindCSS Icon](https://img.icons8.com/color/30/000000/tailwind-css.png)
+- **UI Framework**: TailwindCSS <img src="https://avatars.githubusercontent.com/u/67109815?s=280&v=4" width="50" height="50" alt="TailwindCSS Icon">
 
 ## Features
 
