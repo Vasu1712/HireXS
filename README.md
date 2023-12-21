@@ -1,5 +1,9 @@
 # HireXS: Smarter Hiring Platform
 
+**HR Login Details:**
+- **Username:** abhi
+- **Password:** abhi
+
 ![HireXS Logo](https://github.com/AbhishekkRao/HireXS/assets/77543486/b4046151-e1c9-420b-bd28-3a21b45fc568)
 
 
